@@ -122,9 +122,99 @@ I hope all was clear and I missed nothing. And I know sometimes it can be confus
 
 6. pip install sphinx_rtd_theme
 
-7. Go to first 3 Commands in index.rst and write after them this: modules (feel free to change here the structure)
+7. Go to first 3 Commands in index.rst (in source folder) and write after them this: modules (feel free to change here the structure)
 
 8. go in doc folder (or how it calls) and call make html or make latexpdf (then see in build)
+
+If you want to add your own tabs, you have to create extra .rst-files and call them in the index.rst file. Watch tutorials on how to create .rst files and go for it :)
+<br><br>
+An example index.rst file is that:<br>
+
+``` rst
+.. Wer hat gebohrt? documentation master file, created by
+   sphinx-quickstart on Sat Jan 15 22:56:30 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to the documentation of Wer hat gebohrt?
+================================================
+
+..  toctree::
+   :maxdepth: 4
+   :caption: Contents
+
+   introduction.rst
+   tutorial.rst
+   explain.rst
+   anoog.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+```
+
+And the tutorial as an second example looks like that:<br>
+
+``` rst
+Tutorial
+^^^^^^^^
+This library is programmed for distinguish drilling persons.
+
+To start the application, you need a setup with following points:
+
+* drilldriver and drillcapture programs
+* wired drill
+* wood for drilling
+* at least 2 persons
+* our library
+* python3 installed
+* all modules in the requirements.txt (see below)
+
+.. code-block:: none
+
+    ###### Requirements without Version Specifiers ######
+    pandas
+    matplotlib
+    sklearn
+    ttkthemes
+    pyyaml
+    tsfresh
+    pillow
+    webbrowser
+
+    ###### Requirements with Version Specifiers ######
+    numpy <= 1.20
+
+    ###### Linux System need to install ######
+    # Tkinter
+    # sudo apt-get install python3-tk 
+
+    # And Pillow Tk
+    # sudo apt-get install python3-pil.imagetk
+
+
+If the setup is ready, you have to call the run-function in following module:
+
+:ref:`gui`
+
+See the RUN.py for an exemplary call.
+
+.. hint::
+
+    Dabei muss sichergestellt sein, dass kein weiterer Drilldriver läuft. Um das zu tun, muss einfach der Output in der Konsole/Terminal überprüft werden und es muss **MCCUDP found!** dastehen. Fall dort etwas steht wie **MCCUDP Acquiring...** muss die Anwendung geschlossen werden und folgende Schritte befolgt werden:
+    
+    1. Im Terminal **killall MCCUDP** eingeben
+    2. Erneut **killall MCCUDP** im Terminal eingeben
+    3. Anwendung mit **python3 RUN.py** starten
+    4. Anwendung schließen
+    5. Anwendung erneut starten und nun funktioniert alles wieder
+```
+
+<br><br>
+Remember: the .rst for the code-doc should be created by Sphinx but you still can manipulate them. You could say that the max-depth should be smaller and so the subtab amount is smaller. 
 
 ---
 
