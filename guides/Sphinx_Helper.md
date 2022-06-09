@@ -16,7 +16,7 @@ This guide explains Sphinx and how to use it in projects. For an example see thi
 
 ## Table of Content
 
-[<img style="float:right" width=150px src='../res/rackete_2.png'></img>](../README.md)
+[<img align="right" width=150px src='../res/rackete_2.png'></img>](../README.md)
 
 - [What is Sphinx and why i should use it?](#What-is-Sphinx-and-why-i-should-use-it?)
 - [How to program your own module in python](#How-to-program-your-own-module-in-python)
