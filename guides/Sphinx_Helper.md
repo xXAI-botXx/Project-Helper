@@ -3,12 +3,12 @@
 # Guide for Sphinx
 
 by Tobia Ippolito 
-
-
+<br>
+<br>
 
 This guide explains Sphinx and how to use it in projects. For an example see this documentation which is created with Sphinx
 
-
+<br>
 
 > click the **rocket** for going **back**
 
