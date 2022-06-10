@@ -23,8 +23,25 @@ by Tobia Ippolito
 
 ### [Git Guide](guides/Git_Helper.md)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
+### [Ipynb to Markdown](README.md#Ipynb-to-Markdown)
 
 </div>
 
 ---
-
+  
+  <a name="Ipynb-to_Markdown"></a>
+### Ipynb to Markdown  
+  
+1. Installing the tools
+  ```
+pip install jupyter
+pip install nbconvert
+  ```
+  
+2. Start the cmd and go to the location of the notebook and type follow:
+  ```
+jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --ClearOutput.enabled=True --to markdown README.ipynb
+  ```
+  
+---
+  
