@@ -23,13 +23,14 @@ by Tobia Ippolito
 
 ### [Git Guide](guides/Git_Helper.md)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
-### [Ipynb to Markdown](README.md#Ipynb-to-Markdown)
+### [Ipynb to Markdown](#Ipynb-to-Markdown)  <!-- README.md#Ipynb-to-Markdown -->
+### [Blueprints](#Blueprints)
 
 </div>
 
 ---
   
-  <a name="Ipynb-to_Markdown"></a>
+  <a name="Ipynb_to_Markdown"></a>
 ### Ipynb to Markdown  
   
 1. Installing the tools
@@ -43,5 +44,12 @@ pip install nbconvert
 jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --ClearOutput.enabled=True --to markdown README.ipynb
   ```
   
+---
+
+<a name="Blueprints"></a>
+### Blueprints
+
+- [Console Input/Output Helper](./python%20blueprints/cio_helper.py)
+
 ---
   
