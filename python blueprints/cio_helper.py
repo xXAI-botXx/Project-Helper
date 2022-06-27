@@ -157,12 +157,17 @@ def img_to_str(img_path):
 def print_image(img_path):
     print(img_to_str(img_path))
 
-def print_progress_bar(total, progress):
+def print_progress_bar(total, progress, clear=False):
+    if clear:
+        txt = f"{CLEAR_SCREEN(2)}{SET_POSITION(0,0)}"
+        print_with_only_delay(txt, 0, 0)
     percentage = 100 * (progress/float(total))
     bar = '#'*int(percentage) + ' '*(100-int(percentage)) #+ '-'*(100-int(percentage))
     #print(f"\r[{bar}] {percentage:.2f}%", end="\r")
     progress_str = f"[{bar}] {percentage:0.2f}%"
     sys.stdout.write(progress_str)
+    if clear:
+        sys.stdout.flush()
 
 # Input
 def get_input(message="User: ") -> str:
