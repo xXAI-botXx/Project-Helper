@@ -50,7 +50,7 @@ You are interested? than let's start :)
 
 2. You can now adding python files in this directory and/or you can add more directories with python files there
 
-3. Add a python file called __init__.py which defines which submodules/files will be loaded.
+3. Add a python file called \_\_init\_\_.py which defines which submodules/files will be loaded.
 
 As an example I want to create my own game engine as a module. The engine/the module should call Real Engine.
 The directory-tree looks like this:<br>
@@ -73,7 +73,7 @@ You have to implement it like this:
 
 <br><br>
 In the first __init__.py stands something like this:<br>
-  ./Real Engine/__ini__.py<br>
+  ./Real Engine/\_\_init\_\_.py<br>
 
   ```python
   from . import main
@@ -83,7 +83,7 @@ In the first __init__.py stands something like this:<br>
   ```
 
 <br><br>
-And you don't have to import each method or class in the __init__.py, only the things you need. Internally you can easily import own methods from another python file of your module with:
+And you don't have to import each method or class in the \_\_init\_\_.py, only the things you need. Internally you can easily import own methods from another python file of your module with:
 
 ```python
   from ..other_file import helper_method
@@ -108,30 +108,35 @@ I hope all was clear and I missed nothing. And I know sometimes it can be confus
 
 ### Generate Code Documentation
 
-1. pip nstall sphinx
+1. pip install sphinx
 
-2. in directory where the generation (html/pdf) should be (maybe doc or code_doc)
+2. create a folder in the directory where the project is and call it doc or code_doc
+
+3. find the Sphinx path
     -> as example: C:\Users\tobia\AppData\Local\Programs\Python\Python39\Scripts\sphinx-quickstart 
 
-3. generate documentation with cmd: location_of_sphinx-apidoc -o dirname path_to_module
+4. generate documentation with cmd: location_of_sphinx-apidoc -o dirname path_to_module
     -> as example: C:\Users\tobia\AppData\Local\Programs\Python\Python39\Scripts\sphinx-apidoc -o  code_doc src/Real Engine/
 
-4. Adding following by extinsions = [] in conf.py
-  extensions = [
-      'sphinx.ext.autodoc',
-      'sphinx.ext.napoleon',
-      'sphinx.ext.viewcode'
-  ]
+5. Adding following by extinsions = [] in conf.py<br>
+  extensions = [<br>
+      'sphinx.ext.autodoc',<br>
+      'sphinx.ext.napoleon',<br>
+      'sphinx.ext.viewcode'<br>
+  ]<br>
 
-5. Adding: html_theme = 'sphinx_rtd_theme' by conf.py by html_theme
+6. Adding: html_theme = 'sphinx_rtd_theme' (in conf.py by html_theme)
 
-6. pip install sphinx_rtd_theme
+7. pip install sphinx_rtd_theme
 
-7. Go to first 3 Commands in index.rst (in source folder) and write after them this: modules (feel free to change here the structure)
+8. Go to first 3 Commands in index.rst (a generated file in source folder) and write after them this: modules (feel free to change the structure here)
+  -> Not sure if you need that, you can skip that point for now
 
-8. go in doc folder (or how it calls) and call make html or make latexpdf (then see in build)
+9. go in doc folder (or how you called it) and call: make html or make latexpdf (then see in build)
 
 If you want to add your own tabs, you have to create extra .rst-files and call them in the index.rst file. Watch tutorials on how to create .rst files and go for it :)
+<br><br>
+Before you can see an example of rst files I want to explain what we have done. We first have installed Sphinx. Than we have created a rst-file from your project/python code. After that we have changed some things in the rst-file and added another theme (and that all is custom things which you don't need at all). And with the make-call we generated a pdf/html from the rst-files. And your product is finished. (The rst-files are only other markdown files, which includes how to show what and where.)
 <br><br>
 An example index.rst file is that:<br>
 
