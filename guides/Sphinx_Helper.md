@@ -6,7 +6,7 @@ by Tobia Ippolito
 <br>
 <br>
 
-This guide explains Sphinx and how to use it in projects. For an example see this documentation which is created with Sphinx
+This guide explains Sphinx and how to use it in projects. For an example see [this documentation](https://xxai-botxx.github.io/Wer-hat-gebohrt/) which is created with Sphinx
 
 <br>
 
@@ -33,9 +33,14 @@ Sphinx it an nice tool for generating a documentation for your own module. Moreo
 <br>
 Here are few picture of an api I have created. 
 
-<!-- images -->
+<!-- images !-->
 
-You are interested: than let's start :)
+<img src=https://user-images.githubusercontent.com/50902823/198250105-0a562830-117d-4b91-9d1f-9c9acd9fc5a0.png width=500px></img>
+<img src=https://user-images.githubusercontent.com/50902823/198250674-84efd6de-0999-41bb-af77-902bccb950e2.png width=500px></img>
+<img src=https://user-images.githubusercontent.com/50902823/198250692-fccd906e-1813-49cd-b0d6-3afa7e3eec15.png width=500px></img>
+
+<br>
+You are interested? than let's start :)
 
 ---
 
