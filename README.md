@@ -38,11 +38,13 @@ You need a python installation and have to install the virtual environment libra
 ``` terminal
 pip install virtualenv
 ```
+
 <br>
+
 Now you have to open a terminal (cmd) and have to navigate to the target location.<br>
 Example naviagtion:
 ``` terminal
-D
+D:
 cd "Projects/my new cool project"
 ```
 Now you can easily create a new environment with the installed library, like: "". In env_name you can give it your name like ".env" or "project_name_env".:
