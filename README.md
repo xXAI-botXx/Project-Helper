@@ -47,6 +47,7 @@ Example naviagtion:
 D:
 cd "Projects/my new cool project"
 ```
+
 Now you can easily create a new environment with the installed library, like: "". In env_name you can give it your name like ".env" or "project_name_env".:
 ``` terminal
 python -m venv env_name
@@ -54,12 +55,15 @@ python -m venv env_name
 or in other words:
 python<version> -m venv <virtual-environment-name>
 ```
+
 <br>
+
 You activate a virtual environment with going in the Scripts directory and type activate.bat. If the environment is activate you see the name of the environment on the left.
 ``` terminal
 cd env_name/Scripts
 activate.bat
 ```
+
 Now you can install packages with pip and can use the virtual environment. With the command "pip list" you can check the current installings.
 If you have a requirements.txt (a list of installations with version specification) you can type:
 ``` terminal
