@@ -67,6 +67,16 @@ git status
 
 ---
 
+
+
+```git
+git reset --hard
+```
+​		-> Setzt lokale Veränderungen zurück
+
+
+---
+
 #### <a name='Hinweise:'>Hinweise:</a>
 
 -> Man muss sich mit der Git Bash oder der Git CMD in einem Git repository befinden, damit diese Befehle (außer git clone) funktionieren.
