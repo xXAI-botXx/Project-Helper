@@ -25,6 +25,7 @@ by Tobia Ippolito
 ### [Python Virtual Environments](#Python-Virtual-Environments)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [Ipynb to Markdown](#Ipynb-to-Markdown)  <!-- README.md#Ipynb-to-Markdown -->
+### [Python](#Python)
 ### [Blueprints](#Blueprints)
 
 </div>
@@ -99,7 +100,79 @@ jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --ClearOutput.enabled
 
 ---
 
-<a name="Blueprints"></a>
+<!-- <a name="Python Installation"></a> -->
+### Python Installation
+
+**Python Installation under Windows**
+Download the exe installer file from the official Python website and follow the steps along. If you want to set it as new active environment, you should set the option to add to the PATH.
+Check the installation with opening a new CMD and type "python --version", now the installed version should appear.
+
+**Python Installation on Linux** (unter Ubuntu 20.04)
+
+You can download and build the latest version of Python from the official Python website. It's pretty easy follow the steps and stay calm ;)
+
+Update your system's local repository list:
+
+
+```terminal
+sudo apt update
+```
+
+
+Install supporting dependencies on your system with APT:
+
+```terminal
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
+```
+
+Add important lib for some modules:
+```terminal
+sudo apt-get install libbz2-dev
+```
+(optional) For different TTS models you need espeak:
+```terminal
+sudo apt install espeak lzma liblzma-dev
+```
+
+Make a new directory to store the Python source files:
+
+```terminal
+mkdir /python && cd /python
+```
+
+Download the Python source code from the official FTP server:
+
+```terminal
+sudo wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz
+```
+
+
+Extract the TGZ file that you just downloaded:
+
+```terminal
+sudo tar -xvf Python-3.8.10.tgz
+```
+
+
+You need to perform tests and optimizations before installing Python. This is important as it increases the execution speed of your code by at least 10 percent:
+
+```terminal
+cd Python-3.8.10
+sudo ./configure --enable-loadable-sqlite-extensions
+```
+
+Build the package using the MakeFile present in the directory:
+
+```terminal
+sudo make install
+```
+
+
+After you've implemented these steps, check if Python has been installed on your computer by typing **python3 --version** in the terminal.
+
+---
+
+<!-- <a name="Blueprints"></a> -->
 ### Blueprints
 
 - [Console Input/Output Helper](./python%20blueprints/cio_helper.py)
