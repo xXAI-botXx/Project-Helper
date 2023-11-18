@@ -103,15 +103,14 @@ jupyter nbconvert --ClearMetadataPreprocessor.enabled=True --ClearOutput.enabled
 <!-- <a name="Python Installation"></a> -->
 ### Python Installation
 
-**Python Installation under Windows**
-Download the exe installer file from the official Python website and follow the steps along. If you want to set it as new active environment, you should set the option to add to the PATH.
+**Python Installation under Windows**<br>
+Download the exe installer file from the official Python website and follow the steps along. If you want to set it as new active environment, you should set the option to add to the PATH.<br>
 Check the installation with opening a new CMD and type "python --version", now the installed version should appear.
+<br><br>
+**Python Installation on Linux** (unter Ubuntu 20.04)<br>
 
-**Python Installation on Linux** (unter Ubuntu 20.04)
-
-You can download and build the latest version of Python from the official Python website. It's pretty easy follow the steps and stay calm ;)
-
-Update your system's local repository list:
+You can download and build the latest version of Python from the official Python website. It's pretty easy follow the steps and stay calm ;)<br>
+Update your system's local repository list:<br>
 
 
 ```terminal
