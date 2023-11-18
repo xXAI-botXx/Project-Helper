@@ -59,10 +59,17 @@ python<version> -m venv <virtual-environment-name>
 
 <br>
 
-You activate a virtual environment with going in the Scripts directory and type activate.bat. If the environment is activate you see the name of the environment on the left.
+You activate a virtual environment with going in the Scripts directory and type activate.bat. If the environment is activate you see the name of the environment on the left.<br>
+On Windows:
 ``` terminal
 cd env_name/Scripts
 activate.bat
+```
+
+On Linux:
+``` terminal
+cd env_name/bin
+source activate
 ```
 
 Now you can install packages with pip and can use the virtual environment. With the command "pip list" you can check the current installings.
