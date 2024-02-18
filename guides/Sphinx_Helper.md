@@ -1,5 +1,3 @@
----
-
 # Guide for Sphinx
 
 by Tobia Ippolito 
@@ -119,18 +117,18 @@ I hope all was clear and I missed nothing. And I know sometimes it can be confus
     -> as example: C:\Users\tobia\AppData\Local\Programs\Python\Python39\Scripts\sphinx-apidoc -o  code_doc src/Real Engine/
 
 5. Adding following by extinsions = [] in conf.py<br>
-  extensions = [<br>
+    extensions = [<br>
       'sphinx.ext.autodoc',<br>
       'sphinx.ext.napoleon',<br>
       'sphinx.ext.viewcode'<br>
-  ]<br>
+    ]<br>
 
 6. Adding: html_theme = 'sphinx_rtd_theme' (in conf.py by html_theme)
 
 7. pip install sphinx_rtd_theme
 
 8. Go to first 3 Commands in index.rst (a generated file in source folder) and write after them this: modules (feel free to change the structure here)
-  -> Not sure if you need that, you can skip that point for now
+    -> Not sure if you need that, you can skip that point for now
 
 9. go in doc folder (or how you called it) and call: make html or make latexpdf (then see in build)
 

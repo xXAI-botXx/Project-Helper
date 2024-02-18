@@ -22,10 +22,15 @@ by Tobia Ippolito
 <div align=center>
 
 ### [Git Guide](guides/Git_Helper.md)
-### [Python Virtual Environments](#Python-Virtual-Environments)
+### [Python Virtual Environments](#python-virtual-environments)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
-### [Ipynb to Markdown](#Ipynb-to-Markdown)  <!-- README.md#Ipynb-to-Markdown -->
-### [Python](#Python)
+### [Ipynb to Markdown](#ipynb-to-markdown)  <!-- README.md#Ipynb-to-Markdown -->
+### [Python Installation](#python-installation)
+
+### [IPYNB Interactives](guides/IPYNB_Interactives.md)
+
+### [Python Tests](guides/Python_Tests.md)
+
 ### [Blueprints](#Blueprints)
 
 </div>
