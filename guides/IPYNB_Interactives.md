@@ -427,7 +427,7 @@ display_widgets()
 
 ### All Widgets
 
-[Widget List — Jupyter Widgets 8.1.2 documentation](https://ipywidgets.readthedocs.io/en/latest/examples/Widget List.html)
+<a href="https://ipywidgets.readthedocs.io/en/latest/examples/Widget List.html">Widget List — Jupyter Widgets 8.1.2 documentation</a>
 
-[jupyter-widgets/ipywidgets · GitHub](https://github.com/jupyter-widgets/ipywidgets/blob/main/docs/source/examples/Index.ipynb) or [see here the notebook](./code/Widget List.ipynb) 
+[jupyter-widgets/ipywidgets · GitHub](https://github.com/jupyter-widgets/ipywidgets/blob/main/docs/source/examples/Index.ipynb) or <a href="/code/Widget List.ipynb">see here the notebook</a>
 
