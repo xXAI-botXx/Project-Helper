@@ -271,6 +271,7 @@ class MyAppValueError(ValueError):
 
 #### 1. `SyntaxError`
 - **Description**: Raised when the Python parser encounters a syntax error in the code.
+
 - **Example**:
   
     ```python
@@ -278,67 +279,80 @@ class MyAppValueError(ValueError):
     if x == 10
         print("x is 10")
     ```
-- **Runtime Critical?**: Yes, as it prevents the program from being executed.
+    
+    
 
 #### 2. `IndentationError`
 - **Description**: Raised when there are incorrect indentations in the code.
+
 - **Example**:
     ```python
     def func():
     print("Hello")
     ```
-- **Runtime Critical?**: Yes, as it affects the structure and execution of the code.
+    
+    
 
 #### 3. `TypeError`
 - **Description**: Raised when an operation or function is applied to an object of an inappropriate type.
+
 - **Example**:
     ```python
     x = 10 + "5"
     ```
-- **Runtime Critical?**: Yes, it can cause unexpected behavior or program termination.
+    
+    
 
 #### 4. `NameError`
 - **Description**: Raised when a local or global name is not found.
+
 - **Example**:
     ```python
     print(y)
     ```
-- **Runtime Critical?**: Yes, it indicates potential issues with variable naming and scoping.
+    
+    
 
 #### 5. `ValueError`
 - **Description**: Raised when a function receives an argument of the correct type but with an inappropriate value.
+
 - **Example**:
     ```python
     x = int("abc")
     ```
-- **Runtime Critical?**: Yes, it can lead to unexpected behavior or program termination.
+    
+    
 
 #### 6. `KeyError`
 - **Description**: Raised when a dictionary key is not found.
+
 - **Example**:
     ```python
     my_dict = {"a": 1, "b": 2}
     print(my_dict["c"])
     ```
-- **Runtime Critical?**: Yes, it affects the retrieval of data from dictionaries.
+    
+    
 
 #### 7. `IndexError`
 - **Description**: Raised when a sequence subscript is out of range.
+
 - **Example**:
     ```python
     my_list = [1, 2, 3]
     print(my_list[3])
     ```
-- **Runtime Critical?**: Yes, it indicates potential issues with accessing elements from sequences.
+    
+    
 
 #### 8. `FileNotFoundError`
 - **Description**: Raised when a file or directory is requested but cannot be found.
+
 - **Example**:
     ```python
     with open("nonexistent_file.txt", "r") as file:
         content = file.read()
     ```
-- **Runtime Critical?**: Yes, it prevents file operations from being executed as expected.
 
 
 

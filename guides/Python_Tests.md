@@ -1,6 +1,6 @@
 # Python Tests
 
-[<img align="right" width=150px src="D:/Informatik/Project-Helper/res/rackete_2.png"></img>](../README.md)
+[<img align="right" width=150px src="../res/rackete_2.png"></img>](../README.md)
 
 - [Why?](#why?)
 - [How?](#how?)
