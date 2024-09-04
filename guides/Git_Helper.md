@@ -2,20 +2,20 @@
 
 [<img align="right" width=150px src='../res/rackete_2.png'></img>](../README.md)
 
-- [Wichtigste Git-Befehle zum Merken](#Wichtigste Git-Befehle zum Merken:)
-- [Hinweise](#Hinweise:)
-- [Git Example Worklfow](#Git Example Worklfow:)
-- [Weitere Git-Befehle](#Weitere Git-Befehle:)
+- [Wichtigste Git-Befehle zum Merken](#wichtigste-git-befehle-zum-merken)
+- [Hinweise](#hinweise)
+- [Git Example Worklfow](#git-example-worklfow)
+- [Weitere Git-Befehle](#weitere-git-befehle)
   - [Branches](#branches)
-- [Git GUI](#Git GUI:)
-- [Git Remote](#Git Remote:)
+- [Git GUI](#git-gui)
+- [Git Remote](#git-remote)
 - [Git Buch](https://git-scm.com/book/en/v2)
 
 > click the **rocket** for going **back**
 
 ---
 
-#### <a name='Wichtigste Git-Befehle zum Merken:'>Wichtigste Git-Befehle zum Merken:</a>
+### Wichtigste Git-Befehle zum Merken
 
 
 
@@ -78,7 +78,7 @@ git reset --hard
 
 ---
 
-#### <a name='Hinweise:'>Hinweise:</a>
+### Hinweise
 
 -> Man muss sich mit der Git Bash oder der Git CMD in einem Git repository befinden, damit diese Befehle (außer git clone) funktionieren.
 
@@ -90,7 +90,7 @@ git reset --hard
 
 ---
 
-#### <a name='Git Example Worklfow:'>Git Example Worklfow:</a>
+### Git Example Worklfow
 
 Max Mustermann ist in einem Team zugeteilt worden und soll mit seinen Kameraden ein Projekt mit Git auf die Beine stellen. Aber wo fängt er an? <br>Die Musterschule hat bereits ein Git-Projekt (Repository) erstellt.
 
@@ -126,7 +126,7 @@ Falls das Origin Repository in der Zwischenzeit Veränderungen durchgemacht hat.
 
 ---
 
-#### <a name='Weitere Git-Befehle:'>Weitere Git-Befehle:</a>
+### Weitere Git-Befehle
 
 ```git 
 git checkout <commit sha>
@@ -215,7 +215,7 @@ Falls man in einen anderen Branch arbeitet und nun fertig mit seiner Arbeit ist,
 
 ----
 
-#### <a name='Git GUI:'>Git GUI:</a>
+### Git GUI
 
 Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehen können? Genau dafür existiert die Git GUI und die Arbeit damit ist echt einfach.
 
@@ -252,7 +252,7 @@ Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehe
 
 
 ---
-#### <a name='Git Remote:'>Git Remote:</a>
+### Git Remote
 
 Es ist möglich Projekte von Gitlab auf Github zu übertragen und andersherum. Beispielsweise kannst du ein geheimes Projekt als privates Github Projekt als Backup uploaden.
 
