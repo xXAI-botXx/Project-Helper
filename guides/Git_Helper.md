@@ -8,6 +8,7 @@
 - [Weitere Git-Befehle](#Weitere Git-Befehle:)
   - [Branches](#branches)
 - [Git GUI](#Git GUI:)
+- [Git Remote](#Git Remote:)
 - [Git Buch](https://git-scm.com/book/en/v2)
 
 > click the **rocket** for going **back**
@@ -248,6 +249,20 @@ Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehe
 - Ctrl+P: Push
 - Ctrl+M: Local Merge
 - F5: Rescan
+
+
+---
+#### <a name='Git Remote:'>Git Remote:</a>
+
+Es ist möglich Projekte von Gitlab auf Github zu übertragen und andersherum. Beispielsweise kannst du ein geheimes Projekt als privates Github Projekt als Backup uploaden.
+
+Dazu:
+
+```bash
+git remote add github url-of-empty-github-projekt
+git push github --all
+git remote remove github
+```
 
 ---
 
