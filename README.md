@@ -21,6 +21,7 @@ by Tobia Ippolito
 
 <div align=center>
 
+### [Ananconda](#anaconda)
 ### [Python Virtual Environments](#python-virtual-environments)
 ### [Git Guide](guides/Git_Helper.md)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
@@ -36,6 +37,68 @@ by Tobia Ippolito
 ### [Blueprints](#Blueprints)
 
 </div>
+
+
+
+---
+### Anaconda
+
+**Create a conda env:**
+```terminal
+conda create env -n maskrcnn
+```
+
+```terminal
+conda create env python=3.8 -n maskrcnn
+```
+
+```terminal
+conda create env numpy -n maskrcnn
+```
+
+**remove env:**
+```terminal
+conda env remove -n maskrcnn
+```
+
+**activate and deactivate an env:**
+```terminal
+conda activate maskrcnn
+```
+
+```terminal
+conda deactivate maskrcnn
+```
+
+**install packages:**
+```terminal
+conda install numpy
+```
+
+```terminal
+conda install opencv -c conda-forge
+```
+
+```terminal
+conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
+```
+
+**add channel:**
+```terminal
+conda config --env --add channels conda-forge
+```
+
+**export env:**
+```terminal
+conda env export > env.yml
+```
+
+**clear env cache:**
+```terminal
+conda clean --all
+```
+
+
 
 
 
