@@ -4,10 +4,10 @@ by Tobia Ippolito
 <br>
 <br>
 
-<p align="center">🟡 Welcome here, i'm there to help you out! 🟡</p>
+<p align="center">🟡 Welcome here, you are save here! 🟡</p>
 <br><br>
 
-<p align="center">In this repository you found helpful guides to specific topics of data science projects. Moreover I plan some projects as Issues.</p>
+<p align="center">In this repository you find helpful guides to specific topics of data science projects. So rest here and let help you.</p>
 
 <br><br>
 
@@ -21,20 +21,24 @@ by Tobia Ippolito
 
 <div align=center>
 
+### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
+### [GANs](https://github.com/xXAI-botXx/GANs)
+### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
+### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference)
+### [Git Guide](guides/Git_Helper.md)
 ### [Ananconda](#anaconda)
 ### [Python Virtual Environments](#python-virtual-environments)
-### [Git Guide](guides/Git_Helper.md)
-### [Sphinx Guide](guides/Sphinx_Helper.md)
-### [Ipynb to Markdown](#ipynb-to-markdown)
 ### [Python Installation](#python-installation)
-
-### [IPYNB Interactives](guides/IPYNB_Interactives.md)
-
 ### [Python Tests](guides/Python_Tests.md)
-
 ### [Python Custom Errors/Exceptions](#python-custom-exceptions)
+### [Sphinx Guide](guides/Sphinx_Helper.md)
+### [IPYNB Interactives](guides/IPYNB_Interactives.md)
+### [Ipynb to Markdown](#ipynb-to-markdown)
+### [Julia](https://github.com/xXAI-botXx/HelpJl)
+### [C++](https://github.com/xXAI-botXx/CPP)
+### [Blueprints](#blueprints)
 
-### [Blueprints](#Blueprints)
+
 
 </div>
 
