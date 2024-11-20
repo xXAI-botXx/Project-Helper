@@ -26,6 +26,7 @@ by Tobia Ippolito
 ### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
 ### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference)
 ### [Git Guide](guides/Git_Helper.md)
+### [Docker](https://github.com/xXAI-botXx/Docker)
 ### [Ananconda](#anaconda)
 ### [Python Virtual Environments](#python-virtual-environments)
 ### [Python Installation](#python-installation)
@@ -36,6 +37,7 @@ by Tobia Ippolito
 ### [Ipynb to Markdown](#ipynb-to-markdown)
 ### [Julia](https://github.com/xXAI-botXx/HelpJl)
 ### [C++](https://github.com/xXAI-botXx/CPP)
+### [Latex](https://github.com/xXAI-botXx/Latex)
 ### [Blueprints](#blueprints)
 
 
