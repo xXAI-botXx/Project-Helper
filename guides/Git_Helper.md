@@ -9,6 +9,7 @@
   - [Branches](#branches)
 - [Git GUI](#git-gui)
 - [Git Remote](#git-remote)
+- [Git Submodules](#git-submodules)
 - [Git Buch](https://git-scm.com/book/en/v2)
 
 > click the **rocket** for going **back**
@@ -264,7 +265,30 @@ git push github --all
 git remote remove github
 ```
 
+
+---
+### Git Submodules
+
 ---
 
+Klonen eines Git Repos mit Submodules:
+```bash
+git clone <url>
+git submodule init
+git submodule update
+```
+
+
+Adden eines Submodules
+```bash
+git submodule add <url>
+```
+
+Entfernen eines Submodules:
+```bash
+git rm module-folder-name
+git commit -m "removed submodule"
+git push
+```
 
 
