@@ -15,8 +15,9 @@
 > click the **rocket** for going **back**
 
 ---
-
 ### Wichtigste Git-Befehle zum Merken
+
+---
 
 
 
@@ -77,9 +78,11 @@ git reset --hard
 ​		-> Setzt lokale Veränderungen zurück
 
 
----
 
+---
 ### Hinweise
+
+---
 
 -> Man muss sich mit der Git Bash oder der Git CMD in einem Git repository befinden, damit diese Befehle (außer git clone) funktionieren.
 
@@ -89,9 +92,12 @@ git reset --hard
 
 -> Keine großen Dateien Comitten/Pushen!!!
 
----
 
+
+---
 ### Git Example Worklfow
+
+---
 
 Max Mustermann ist in einem Team zugeteilt worden und soll mit seinen Kameraden ein Projekt mit Git auf die Beine stellen. Aber wo fängt er an? <br>Die Musterschule hat bereits ein Git-Projekt (Repository) erstellt.
 
@@ -125,9 +131,13 @@ Max Mustermann ist in einem Team zugeteilt worden und soll mit seinen Kameraden 
 
 Falls das Origin Repository in der Zwischenzeit Veränderungen durchgemacht hat. Muss man sein lokales Repository zuvor aktualisieren (git pull) und anschließend seine eigenen Änderungen pushen.
 
----
 
+
+
+---
 ### Weitere Git-Befehle
+
+---
 
 ```git 
 git checkout <commit sha>
@@ -214,9 +224,12 @@ Falls man in einen anderen Branch arbeitet und nun fertig mit seiner Arbeit ist,
 
 > Denke daran, dass du zuvor deine Änderungen auf deinem Arbeitsbranch auch wirklich übernommen hast -> comitted und gepushed.
 
-----
 
+
+---
 ### Git GUI
+
+---
 
 Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehen können? Genau dafür existiert die Git GUI und die Arbeit damit ist echt einfach.
 
@@ -254,6 +267,8 @@ Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehe
 
 ---
 ### Git Remote
+
+---
 
 Es ist möglich Projekte von Gitlab auf Github zu übertragen und andersherum. Beispielsweise kannst du ein geheimes Projekt als privates Github Projekt als Backup uploaden.
 
