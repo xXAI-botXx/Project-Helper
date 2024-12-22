@@ -22,6 +22,7 @@ by Tobia Ippolito
 <div align=center>
 
 ### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
+### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
 ### [GANs](https://github.com/xXAI-botXx/GANs)
 ### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
 ### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference)
