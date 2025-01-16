@@ -16,12 +16,13 @@ This guide explains Sphinx and how to use it in projects. For an example see [th
 
 [<img align="right" width=150px src='../res/rackete_2.png'></img>](../README.md)
 
-- [What is Sphinx and why i should use it?](#What-is-Sphinx-and-why-i-should-use-it?)
-- [How to program your own module in python](#How-to-program-your-own-module-in-python)
-- How to use it
-  - [Generate Code Documentation](#Generate-Code-Documentation)
-- [Publish as Website](#Publish-as-Website)
-- [How you should code (to use Sphinx later)](#How-you-should-code)
+- [Guide for Sphinx](#guide-for-sphinx)
+  - [Table of Content](#table-of-content)
+    - [What is Sphinx and why i should use it?](#what-is-sphinx-and-why-i-should-use-it)
+    - [How to program your own module in python](#how-to-program-your-own-module-in-python)
+    - [Generate Code Documentation](#generate-code-documentation)
+    - [Publish as Website](#publish-as-website)
+    - [How you should code](#how-you-should-code)
 
 ---
 
@@ -291,13 +292,13 @@ Here are important writing styles for Sphinx:<br>
 ...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2 * x + 1<br>
 ...     <br>
 >>> X, y = ann.data.generate_binary_classification_data(<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_1=(0, 5),<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_1=(1, 3),<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_2=(5, 10),<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_2=(2, 4),<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_1=50,<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_2=50,<br>
-...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func=linear_function,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_1=(-8, 8),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_1=(0.5, 0.5),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_2=(-8, 8),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_2=(-0.5, -0.5),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_1=500,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_2=150,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func=np.sin,<br>
 ...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plotting=True,<br>
 ...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot_style=None<br>
 ... )<br>
@@ -309,7 +310,7 @@ Reference to a class or function or something:<br>
 For more/specific info look here: https://www.sphinx-doc.org/en/master/usage/restructuredtext/domains.html#cross-referencing-syntax
 
 <br><br><br>
-And at least a bigger/real example:<br>
+And at least 2 bigger/real examples. One is following project: https://github.com/xXAI-botXx/ANN-106. <br>The other example is following:<br>
 
 ```python
 """
