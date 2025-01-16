@@ -284,6 +284,24 @@ Here are important writing styles for Sphinx:<br>
 :return: [ReturnDescription]<br>
 :rtype: [ReturnType]<br>
 <br>
+:example:<br>
+<br>
+>>> import ann106 as ann<br>
+>>> def linear_function(x): <br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return 2 * x + 1<br>
+...     <br>
+>>> X, y = ann.data.generate_binary_classification_data(<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_1=(0, 5),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_1=(1, 3),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x_value_range_class_2=(5, 10),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y_value_range_class_2=(2, 4),<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_1=50,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value_amount_class_2=50,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;func=linear_function,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plotting=True,<br>
+...     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plot_style=None<br>
+... )<br>
+<br>
 <br>
 Reference to a class or function or something:<br>
 :class:`~anoog.automation.graphical_user_interface.GUI_App`<br>
