@@ -21,13 +21,18 @@ by Tobia Ippolito
 
 <div align=center>
 
-### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
-### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
-### [GANs](https://github.com/xXAI-botXx/GANs)
-### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
-### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference)
+<br>
+
+### <------ General ------>
 ### [Git Guide](guides/Git_Helper.md)
+### [SSH](guides/SSH.md)
+### [Latex](https://github.com/xXAI-botXx/Latex)
+### [Chocolately](guides/Chocolately.md)
 ### [Docker](https://github.com/xXAI-botXx/Docker)
+
+<br><br>
+
+### <------ Python ------>
 ### [Ananconda](#anaconda)
 ### [Python Virtual Environments](#python-virtual-environments)
 ### [Python Installation](#python-installation)
@@ -36,15 +41,33 @@ by Tobia Ippolito
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
-### [Julia](https://github.com/xXAI-botXx/HelpJl)
-### [C++](https://github.com/xXAI-botXx/CPP)
-### [Latex](https://github.com/xXAI-botXx/Latex)
 ### [Blueprints](#blueprints)
+
+<br><br>
+
+### <------ Artificial Intelligence ------>
+### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
+### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
+### [GANs](https://github.com/xXAI-botXx/GANs)
+### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
+### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference)
+### [Julia](https://github.com/xXAI-botXx/HelpJl)
+
+<br><br>
+
+### <------ C++ ------>
+### [C++](https://github.com/xXAI-botXx/CPP)
+### [Doxygen](guides/Doxygen.md)
+
+
 
 
 
 </div>
 
+
+
+<br><br>
 
 
 ---
@@ -434,5 +457,12 @@ Here are some helpful python files.
 
 - [Console Input/Output Helper](./python%20blueprints/cio_helper.py)
 
+
+
+
+
 ---
+
+
+
 
