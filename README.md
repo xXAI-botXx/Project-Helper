@@ -73,6 +73,27 @@ by Tobia Ippolito
 ---
 ### Anaconda
 
+**Installation:**
+In windows you can just download the installer [from the official page](https://www.anaconda.com/download/) and follow the instructions. <br>
+On Linux, use:
+```bash
+wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+
+bash Anaconda3-2024.10-1-Linux-x86_64.sh
+```
+And there you can again follow the instructions.
+
+Lastly add the path to your system paths and init conda:
+```bash
+export PATH="$HOME/anaconda3/bin:$PATH"
+
+conda init
+```
+
+Finish.
+
+
+
 **Create a conda env:**
 ```terminal
 conda create env -n maskrcnn
