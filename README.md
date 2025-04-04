@@ -73,7 +73,7 @@ by Tobia Ippolito
 ---
 ### Anaconda
 
-**Installation:**
+**Installation:**<br>
 In windows you can just download the installer [from the official page](https://www.anaconda.com/download/) and follow the instructions. <br>
 On Linux, use:
 ```bash
@@ -90,7 +90,19 @@ export PATH="$HOME/anaconda3/bin:$PATH"
 conda init
 ```
 
+Now reopen your bash.
+
 Finish.
+
+
+
+**Using pip:**<br>
+One nice thing about anaconda environments is that you don't have to use anaconda packages instead you also can install normal pip packages. This have some disadvantages (checking for compatibility) but some projects are more "pip based" or you want to install requirements from a requirements.txt and so pip is a very nice way in conda envs. If you are in a environment you don't use your systems pip instead every conda env have its own python and own pip, so you don't have to worry about that and conda envs have still many advantages.
+
+Sometimes pip is already ready to go after creating a new conda env but sometimes you have to install pip, which is very simple:
+```bash
+conda install pip -y
+```
 
 
 
@@ -107,10 +119,14 @@ conda create env python=3.8 -n maskrcnn
 conda create env numpy -n maskrcnn
 ```
 
+
+
 **remove env:**
 ```terminal
 conda env remove -n maskrcnn
 ```
+
+
 
 **activate and deactivate an env:**
 ```terminal
@@ -120,6 +136,8 @@ conda activate maskrcnn
 ```terminal
 conda deactivate maskrcnn
 ```
+
+
 
 **install packages:**
 ```terminal
@@ -134,15 +152,21 @@ conda install opencv -c conda-forge
 conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvidia
 ```
 
+
+
 **add channel:**
 ```terminal
 conda config --env --add channels conda-forge
 ```
 
+
+
 **export env:**
 ```terminal
 conda env export > env.yml
 ```
+
+
 
 **clear env cache:**
 ```terminal
