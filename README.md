@@ -73,6 +73,10 @@ by Tobia Ippolito
 ---
 ### Anaconda
 
+Anaconda is one of the most important tools in Data Science and Machine learning. It allows you to create different python environments, independent from each other. Multiple project are so easy to handle on a system. Installation of a project is made easy with anaconda. Handling old versions of python is easy. If you want that your project is easy for others to use and install, then anaconda handles this like a breeze.<br>
+You can use anaconda in your bash or in the anaconda prompt shell, both provide the same features. There is also a GUI, which I can not recommend, it is slow and harder to handle.
+
+
 **Installation:**<br>
 In windows you can just download the installer [from the official page](https://www.anaconda.com/download/) and follow the instructions. <br>
 On Linux, use:
@@ -104,42 +108,62 @@ Sometimes pip is already ready to go after creating a new conda env but sometime
 conda install pip -y
 ```
 
+Now you can use pip as you know it:
+```
+pip install -r ./requirements.txt
+```
+
 
 
 **Create a conda env:**
 ```terminal
-conda create env -n maskrcnn
+conda create -n maskrcnn
 ```
 
 ```terminal
-conda create env python=3.8 -n maskrcnn
+conda create -n maskrcnn python=3.8
 ```
 
 ```terminal
-conda create env numpy -n maskrcnn
+conda create -n maskrcnn numpy
+```
+
+```terminal
+conda create --name maskrcnn --file ./env.yml
+```
+
+```terminal
+conda env create --file ./env.yml
 ```
 
 
 
-**remove env:**
+**Remove env:**
 ```terminal
 conda env remove -n maskrcnn
 ```
 
 
 
-**activate and deactivate an env:**
+**List all envs:**
+```terminal
+conda env list
+```
+
+
+
+**Activate and deactivate an env:**
 ```terminal
 conda activate maskrcnn
 ```
 
 ```terminal
-conda deactivate maskrcnn
+conda deactivate
 ```
 
 
 
-**install packages:**
+**Install packages:**
 ```terminal
 conda install numpy
 ```
@@ -154,21 +178,46 @@ conda install pytorch torchvision torchaudio pytorch-cuda=12.4 -c pytorch -c nvi
 
 
 
-**add channel:**
+**See all packages of current env:**
+```terminal
+conda list
+```
+
+
+
+**Add channel:**
 ```terminal
 conda config --env --add channels conda-forge
 ```
 
 
 
-**export env:**
+**Export env:**
 ```terminal
 conda env export > env.yml
 ```
 
 
 
-**clear env cache:**
+**Updating Python version**<br>
+First install new python version in your env:
+```bash
+conda install python=3.9
+```
+
+Now check your python version (it will print the python version of your current conda env, not from your system the global python):
+```bash
+python --version
+```
+
+Finally you may want to update your packages:
+```bash
+conda update --all
+```
+
+
+
+**Clear env cache:**
 ```terminal
 conda clean --all
 ```
