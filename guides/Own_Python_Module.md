@@ -292,7 +292,7 @@ prime_printer/
 
 \_\_init\_\_.py:
 ```python
-from . import cio_helper
+from .cio_helper import *
 ```
 
 
