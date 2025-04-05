@@ -39,9 +39,10 @@ by Tobia Ippolito
 ### [Python Tests](guides/Python_Tests.md)
 ### [Python Custom Errors/Exceptions](#python-custom-exceptions)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
+### [Custom Module](guides/Own_Python_Module.md)
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
-### [Blueprints](#blueprints)
+### [Console Input/Output Helper](https://github.com/xXAI-botXx/prime_printer)
 
 <br><br>
 
@@ -541,15 +542,6 @@ class MyAppValueError(ValueError):
         content = file.read()
     ```
 
-
-
----
-
-### Blueprints
-
-Here are some helpful python files.
-
-- [Console Input/Output Helper](./python%20blueprints/cio_helper.py)
 
 
 
