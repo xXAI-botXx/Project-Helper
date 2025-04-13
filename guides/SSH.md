@@ -9,25 +9,15 @@ This file tries to help out for remote control a compute device (server).
 Table of Contents:
 
 - [Helpful Bash-Commands](#helpful-bash-commands)
-
 - [Create SSH Connection](#create-ssh-connection)
-
 - [Start SSH Connection](#start-ssh-connection)
-
 - [Data Transfer](#data-transfer)
-
 - [Wake on Lan](#wake-on-lan)
-
 - [Run Python-Script in Background](#run-python-script-in-background)
-
 - [Run ipynb in Background](#run-ipynb-in-background)
-
 - [Check if Script is Running](#check-if-script-is-running)
-
 - [Start Tensorboard](#start-tensorboard)
-
 - [Start MLFlow UI](#start-mlflow-ui)
-
 - [GUI Sharing](#gui-sharing)
 
   
@@ -74,6 +64,30 @@ Linux:
 - `ifconfig` / `ip a` – Show network interfaces
 - `ping` – Test network connectivity
 - `sudo` – Execute a command as another user (usually root)
+
+more helpful commands:
+- Find most large files: 
+   ```bash
+   du -h ~ --max-depth=1 | sort -hr | head -n 20
+   ```
+- Kill all docker container:
+   ```bash
+   docker kill $(docker ps -q)
+   ```
+- Kill old/stopped docker container:
+   ```bash
+   docker container prune
+   ```
+- Show all running python runs from a specific file
+   ```bash
+   ps aux | grep multiprocessing.py
+   ```
+- Kill all running python runs from a specific file
+   ```bash
+   ps aux | grep multiprocessing.py | grep -v grep | awk '{print $2}' | xargs kill -9
+   ```
+
+> If your process (training or data generation) failed without a good reason, then you might want to check you free memory space with 'df -h'. I often run out of memory and wondered why the processed stopped and why I can't connect to my SSH server anymore.<br>Also check your old docker container, they still saved their memory: docker ps -a & docker container prune
 
 
 

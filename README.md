@@ -47,6 +47,7 @@ by Tobia Ippolito
 <br><br>
 
 ### <------ Artificial Intelligence ------>
+### [AI (general)](https://github.com/xXAI-botXx/AI)
 ### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
 ### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
 ### [GANs](https://github.com/xXAI-botXx/GANs)
