@@ -44,12 +44,13 @@ by Tobia Ippolito
 ### [Ipynb to Markdown](#ipynb-to-markdown)
 ### [Console Input/Output Helper](https://github.com/xXAI-botXx/prime_printer)
 ### [Python Reference](guides/Python_Reference.md) \*coming soon
-### [Python GUI](https://github.com/xXAI-botXx/Python_GUI) \*coming soon
+
 
 <br><br>
 
 ### <------ Artificial Intelligence ------>
 ### [AI (general)](https://github.com/xXAI-botXx/AI)
+### [Data Engineer Reference](https://github.com/xXAI-botXx/Data-Engineer-Reference) \*coming soon
 ### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
 ### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
 ### [GANs](https://github.com/xXAI-botXx/GANs)
@@ -60,12 +61,13 @@ by Tobia Ippolito
 ### [PyTorch Reference (not from me)](https://github.com/xXAI-botXx/PyTorch-Reference)
 ### [Julia](https://github.com/xXAI-botXx/HelpJl)
 
-
+<!--
 <br><br>
 
 ### <------ Gaming ------>
+<!--
 ### [Ursina](https://github.com/xXAI-botXx/Ursina) \*coming soon
-
+-->
 
 <br><br>
 
