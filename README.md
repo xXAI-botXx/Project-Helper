@@ -34,8 +34,8 @@ by Tobia Ippolito
 
 ### <------ Python ------>
 ### [Ananconda](#anaconda)
-### [Python Virtual Environments](#python-virtual-environments)
-### [Python Installation](#python-installation)
+### [Python Virtual Environments](#python-virtual-environments-1)
+### [Python Installation](#python-installation-1)
 ### [Python Tests](guides/Python_Tests.md)
 ### [Python Custom Errors/Exceptions](#python-custom-exceptions)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
@@ -43,22 +43,23 @@ by Tobia Ippolito
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
 ### [Console Input/Output Helper](https://github.com/xXAI-botXx/prime_printer)
-### [Python Reference](guides/Python_Reference.md) \*coming soon
+### [Python Reference](https://github.com/xXAI-botXx/Python-Reference) 
+### [Print Helper (prime)](https://github.com/xXAI-botXx/prime_printer)
 
 
 <br><br>
 
 ### <------ Artificial Intelligence ------>
 ### [AI (general)](https://github.com/xXAI-botXx/AI)
-### [Data Engineer Reference](https://github.com/xXAI-botXx/Data-Engineer-Reference) \*coming soon
+### [Data Engineer Reference](https://github.com/xXAI-botXx/Data-Engineer-Reference) 
 ### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
 ### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
 ### [GANs](https://github.com/xXAI-botXx/GANs)
 ### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
-### [Transformer](https://github.com/xXAI-botXx/Project_Transformer) \*coming soon
-### [PyTorch Reference](guides/PyTorch.md) \*coming soon
-### [TensorFlow Reference](guides/TensorFlow.md) \*coming soon
-### [PyTorch Reference (not from me)](https://github.com/xXAI-botXx/PyTorch-Reference)
+### [Transformer](https://github.com/xXAI-botXx/Project_Transformer) 
+### [TensorFlow Reference](https://github.com/xXAI-botXx/TensorFlow-Reference) 
+### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference) 
+### [PyTorch Reference (not from me)](https://github.com/xXAI-botXx/PyTorch-Reference-Extern)
 ### [Julia](https://github.com/xXAI-botXx/HelpJl)
 
 <!--
