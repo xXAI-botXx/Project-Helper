@@ -1,4 +1,4 @@
-# SSH
+# Remote ML Workflow & GPU Management
 
 [<img align="right" width=150px src='../res/rackete_2.png'></img>](../README.md)
 
@@ -13,6 +13,9 @@ Table of Contents:
 - [Start SSH Connection](#start-ssh-connection)
 - [Data Transfer](#data-transfer)
 - [Wake on Lan](#wake-on-lan)
+- [GPU Healthcare (Nvidia)](#gpu-healthcare)
+- [PyTorch](#pytorch)
+- [TensorFlow](#tensorflow)
 - [Run Python-Script in Background](#run-python-script-in-background)
 - [Run ipynb in Background](#run-ipynb-in-background)
 - [Check if Script is Running](#check-if-script-is-running)
@@ -119,8 +122,36 @@ Windows (cmd):
 - `chkdsk` – Check the file system and disk health  
 
 
+**Bonus: Starting a process in background**
 
+* **Linux:**
+   ```bash
+   nohup *your_command(s)_to_run > my_process.log 2>&1 &
+   ```
+   Explanation:
+   - `nohup` the process will not stop after logging out of the console.
+   - `>` my_process.log writes output in the log file.
+   - `2>&1' leads the error messages also into the file.
+   - `&` starts the process in background -> you can continuing tiping/executing something else.
+* **Windows (cmd):**<br>
+   ```powershell
+   start /b your_command(s)_to_run > my_process.log 2>&1
+   ```
+   Explanation:
+   - `start /b` — runs the command without opening a new window (`/b` means *background* in the same console session). The process will keep running even if you close the console if the program itself is detached or independent.
+   - `>` redirects standard output (stdout) into `my_process.log`.
+   - `2>&1` redirects standard error (stderr) into the same destination as stdout, so both go into the log file.
+* **Windows (Powershell):**<br>
+   ```powershell
+   Start-Process powershell -ArgumentList '-NoProfile -Command "your_command(s)_to_run > my_process.log 2>&1"' -WindowStyle Hidden
+   ```
+   Explanation:
+   - `Start-Process` — launches a completely new process, detached from the current PowerShell session (so it won’t die if you log out or close the window).
+   - `powershell -NoProfile -Command` — runs your command inside a clean PowerShell environment.
+   - `> my_process.log 2>&1` — redirects both stdout and stderr to the log file.
+   - `-WindowStyle Hidden` — keeps it from popping up a new visible console window.
 
+<br><br>
 
 ---
 ### Create SSH Connection
@@ -202,7 +233,7 @@ To avoid password prompts, create an SSH key and add it to the remote server.
   ```
 
 
-
+<br><br>
 
 
 ---
@@ -223,7 +254,7 @@ Or
 VS Code Remote SSH Extension. Paste: local-admin@10.24.3.16 and type your password.
 
 
-
+<br><br>
 
 
 ---
@@ -261,7 +292,7 @@ scp -r local-admin@10.24.3.16:/home/local-admin/src/tf2/benchmark_results /home/
 ```
 
 
-
+<br><br>
 
 
 ---
@@ -322,6 +353,385 @@ sudo shutdown -h now
 
 
 
+<br><br>
+
+---
+### GPU Healthcare
+
+In order to train AI models we most likely need an accelerator (a GPU). And most likely this must be a Nvidia GPU.
+
+For usage we need a Nvidia Driver and a CUDA installation.
+
+<br>
+
+**Linux installation** <br>
+```bash
+# Installation (Ubuntu/Debian example)
+sudo apt update
+sudo apt install -y nvidia-driver-535  # replace with latest recommended driver
+# Optional: install CUDA toolkit
+sudo apt install -y nvidia-cuda-toolkit
+
+# Testing
+nvidia-smi
+nvcc --version   # if CUDA toolkit installed
+```
+
+<br>
+
+**Linux reinstallation** <br>
+```bash
+# Remove existing drivers & CUDA
+sudo apt remove --purge '^nvidia-.*'
+sudo apt autoremove
+sudo apt clean
+
+# Reinstall latest NVIDIA driver (Ubuntu/Debian example)
+sudo apt update
+sudo apt install -y nvidia-driver-535  # Replace with latest recommended
+# Optional: reinstall CUDA toolkit
+sudo apt install -y nvidia-cuda-toolkit
+
+# Reboot to load new driver
+sudo reboot
+
+# Testing after reboot
+nvidia-smi
+nvcc --version   # if CUDA toolkit installed
+```
+
+<br>
+
+**Linux Debugging** <br>
+```bash
+# Check if GPU is detected by PCI bus
+lspci | grep -i nvidia
+
+# Check driver module
+lsmod | grep nvidia
+
+# Try manually loading the driver
+sudo modprobe nvidia
+
+# Check driver logs for errors
+dmesg | grep -i nvidia
+journalctl -xe | grep -i nvidia
+```
+
+<br>
+
+**Windows installation** <br>
+```cmd
+# Installation
+:: 1. Download and install the latest NVIDIA driver from:
+::    https://www.nvidia.com/Download/index.aspx
+:: 2. (Optional) Download and install the CUDA Toolkit from:
+::    https://developer.nvidia.com/cuda-downloads
+
+# Testing
+nvidia-smi
+nvcc --version   :: only works if CUDA Toolkit installed
+```
+
+<br>
+
+**Windows reinstallation**<br>
+```cmd
+:: 1. Open "Add or Remove Programs" and uninstall:
+::    - NVIDIA Graphics Driver
+::    - NVIDIA GeForce Experience (optional)
+::    - Any existing CUDA Toolkit installation (optional)
+::
+:: 2. Reboot the PC.
+::
+:: 3. Download and install the latest NVIDIA driver:
+::    https://www.nvidia.com/Download/index.aspx
+::
+:: 4. (Optional) Download and install the latest CUDA Toolkit:
+::    https://developer.nvidia.com/cuda-downloads
+::
+:: 5. Reboot again to apply changes.
+
+:: Testing
+nvidia-smi
+nvcc --version
+```
+
+<br>
+
+**Windows Debugging**<br>
+- Open Device Manager → expand Display adapters → check if NVIDIA GPU is listed without a yellow warning icon.
+- If missing or with a warning:
+   1. Uninstall the driver (right-click → Uninstall device → Delete the driver software).
+   2. Reinstall the latest driver from NVIDIA’s website.
+- Check Windows Event Viewer → System logs for NVIDIA-related errors.
+- Ensure Windows Update hasn’t replaced your NVIDIA driver with an older one (disable automatic driver updates if needed).
+
+
+<br>
+
+**Checking GPU**<br>
+We can then check our GPU by typing following command and this is a command you will very often type:
+```bash
+nvidia-smi
+```
+
+And:
+```bash
+nvcc --version
+```
+
+For checking with PyTorch and TensorFlow:
+```bash
+python -c "import torch, tensorflow as tf; print('PyTorch GPU:', torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else None); print('TensorFlow GPU:', tf.config.list_physical_devices('GPU'))"
+```
+
+For checking with only PyTorch:
+```bash
+python -c "import torch; print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'No GPU found')"
+```
+
+For checking with only TensorFlow:
+```bash
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+
+**Using Docker with GPU**<br>
+Docker provides a reproducible environment for GPU workloads without installing Python packages or CUDA directly. *The Nvidia Driver has to be installed on the host system.*
+```bash
+# TensorFlow GPU container
+docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu \
+    python -c "import tensorflow as tf; print(tf.__version__); print(tf.config.list_physical_devices('GPU'))"
+
+# PyTorch GPU container
+docker run --gpus all -it --rm pytorch/pytorch:latest \
+    python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else None)"
+```
+- `--gpus` all ensures the container can access all GPUs.
+- `--rm` removes the container after exit.
+- `-it` gives an interactive terminal.
+This is useful for testing if your GPU is working correctly in a reproducible environment, even if your host system doesn’t have Python, CUDA, or libraries installed.
+
+<br>
+
+**Other related commands**<br>
+
+- GPU status live refresh every 1 second:
+   ```bash
+   nvidia-smi -l 1
+   ```
+- Custom GPU info in CSV format:
+   ```bash
+   nvidia-smi --query-gpu=name,driver_version,memory.total,memory.used,memory.free --format=csv
+   ```
+- Process monitoring (shows which PIDs are using the GPU):
+   ```bash
+   nvidia-smi pmon -c 1
+   ```
+- Show GPU topology & NVLink connections:
+   ```bash
+   nvidia-smi topo --matrix
+   ```
+- Power usage & temp stats:
+   ```bash
+   nvidia-smi --query-gpu=power.draw,temperature.gpu --format=csv
+   ```
+- Reset a GPU (dangerous if in use):
+   ```bash
+   nvidia-smi --gpu-reset -i <id>
+   ```
+- Disable auto boost clocks (for stable benchmarking):
+   ```bash
+   nvidia-smi --auto-boost-default=0
+   ```
+- Show full options list:
+   ```bash
+   nvidia-smi --help
+   ```
+
+- Show detailed GPU hardware info (Linux)
+   ```bash
+   lspci | grep -i nvidia
+   ```
+
+
+<br><br>
+
+---
+### PyTorch
+
+In order to use the GPU we set up in the previous step, we need to install PyTorch with GPU support.<br>
+Both libraries can be installed via Conda, pip (vanilla), or run inside a Docker container.<br>
+Conda is good for quick and reproducable python environments - you can change your python version very easily. Docker is even more reproducable but a bit more complicated (make/pull image + run via container).
+
+> For [Anaconda installation see this](https://github.com/xXAI-botXx/Project-Helper#anaconda) + for [Docker installation see this](https://github.com/xXAI-botXx/Docker).
+
+**Installation**
+- Via pip
+   ```bash
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+   ```
+- Via Conda (in anaconda bash) -> [also see this](https://github.com/xXAI-botXx/Project-Helper#anaconda)
+   ```bash
+   # Replace "cu126" with the CUDA version installed on your system (check with nvcc --version)
+   conda create -n torch python=3.12 -y
+   conda activate torch
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+   ```
+- Via Docker
+   ```bash
+   # Latest PyTorch image with CUDA support
+   docker run --gpus all -it --rm pytorch/pytorch:latest
+   ```
+
+**Check**
+```bash
+python -c "import torch; print(torch.__version__); print(torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else None)"
+```
+
+```bash
+docker run --gpus all --rm pytorch/pytorch:latest \
+    python -c "import torch; print(torch.__version__); print(torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else None)"
+```
+
+**Cleanup**
+```bash
+pip uninstall torch torchvision -y
+```
+
+**Run with Docker**
+```bash
+# Start TF container in background
+docker run --gpus all -d --name torch_container pytorch/pytorch:latest tail -f /dev/null
+
+# Enter container
+docker exec -it torch_container bash
+
+# Stop container
+docker stop torch_container
+docker rm torch_container
+```
+
+
+<br><br>
+
+---
+### Tensorflow
+
+In order to use the GPU we set up in the previous step, we need to install PyTorch with GPU support.<br>
+Both libraries can be installed via Conda, pip (vanilla), or run inside a Docker container.<br>
+Conda is good for quick and reproducable python enviroments - you can change your python version very easily. Docker is even more reproducable but a bit more complicated (make/pull image + run via container).
+
+> For [Anaconda installation see this](https://github.com/xXAI-botXx/Project-Helper#anaconda) + for [Docker installation see this](https://github.com/xXAI-botXx/Docker).
+
+
+**Installation**
+- Via pip
+   ```bash
+   # Will install GPU-enabled TF if requirements are met
+   pip install tensorflow==2.15.*
+   ```
+- Via Conda (in anaconda bash) -> [also see this](https://github.com/xXAI-botXx/Project-Helper#anaconda)
+   ```bash
+   conda create -n tf python=3.10 -y
+   conda activate tf
+   pip install tensorflow==2.15.*  # GPU-enabled by default if NVIDIA driver + CUDA/cuDNN present
+   ```
+- Via Docker
+   ```bash
+   # Latest TensorFlow image with GPU support
+   docker run --gpus all -it --rm tensorflow/tensorflow:latest-gpu
+   ```
+
+**Check**
+```bash
+python -c "import tensorflow as tf; print(tf.__version__); print(tf.config.list_physical_devices('GPU'))"
+```
+
+```bash
+docker run --gpus all --rm tensorflow/tensorflow:latest-gpu \
+    python -c "import tensorflow as tf; print(tf.__version__); print(tf.config.list_physical_devices('GPU'))"
+```
+
+**Cleanup**
+```bash
+pip uninstall tensorflow tensorflow-gpu -y
+```
+
+**Run with Docker**
+```bash
+# Start TF container in background
+docker run --gpus all -d --name tf_container tensorflow/tensorflow:latest-gpu tail -f /dev/null
+
+# Enter container
+docker exec -it tf_container bash
+
+# Stop container
+docker stop tf_container
+docker rm tf_container
+```
+
+<br><br>
+
+---
+### Run Docker in Background
+
+Here’s the same chapter in English:
+
+
+<br><br>
+
+---
+
+### Run Docker in Background
+
+Sometimes you want to **run Docker containers in the background**, e.g., for training or other long-running jobs. Use the `-d` parameter (detached mode).
+
+**Example: PyTorch GPU container in the background**
+
+```bash
+docker run --gpus all -d --name my_pytorch_container pytorch/pytorch:latest tail -f /dev/null
+```
+
+* `-d` → starts the container in detached mode
+* `--name my_pytorch_container` → gives the container a friendly name
+* `tail -f /dev/null` → keeps the container alive without exiting immediately
+
+**Example: TensorFlow GPU container in the background**
+
+```bash
+docker run --gpus all -d --name my_tensorflow_container tensorflow/tensorflow:latest-gpu tail -f /dev/null
+```
+
+
+**Access the running container**
+
+```bash
+docker exec -it my_pytorch_container bash
+```
+
+or
+
+```bash
+docker exec -it my_tensorflow_container bash
+```
+
+This allows you to work interactively, run scripts, or test the frameworks.
+
+
+**Stop / remove the container**
+
+```bash
+docker stop my_pytorch_container
+docker rm my_pytorch_container
+```
+
+The same applies for TensorFlow containers.
+
+
+
+<br><br>
+
 ---
 ### Run Python-Script in Background
 
@@ -344,7 +754,7 @@ sudo shutdown -h now
    ```
 
 
-
+<br><br>
 
 
 ---
@@ -381,7 +791,7 @@ Because the jupyter-server is not started from VS Code, so it still runs and the
 
 
 
-
+<br><br>
 
 ---
 ### Check if Script is Running
@@ -420,7 +830,7 @@ Sometimes it could be helpful to reboot or kill a process.
 
 
 
-
+<br><br>
 
 
 ---
@@ -441,7 +851,7 @@ http://10.24.3.16:6006
 
 
 
-
+<br><br>
 
 ---
 
@@ -470,7 +880,7 @@ find . -type d -name mlruns 2>/dev/null
 
 
 
-
+<br><br>
 
 
 ---

@@ -25,7 +25,7 @@ by Tobia Ippolito
 
 ### <------ General ------>
 ### [Git Guide](guides/Git_Helper.md)
-### [SSH](guides/SSH.md)
+### [Remote ML Workflow & GPU Management (with cmd/bash commands + SSH guide)](guides/Remote_ML_Workflow_and_GPU_Management.md)
 ### [Latex](https://github.com/xXAI-botXx/Latex)
 ### [Chocolately](guides/Chocolately.md)
 ### [Docker](https://github.com/xXAI-botXx/Docker)
