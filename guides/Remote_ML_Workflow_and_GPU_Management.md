@@ -671,13 +671,6 @@ docker stop tf_container
 docker rm tf_container
 ```
 
-<br><br>
-
----
-### Run Docker in Background
-
-Here’s the same chapter in English:
-
 
 <br><br>
 
@@ -750,7 +743,11 @@ The same applies for TensorFlow containers.
    ```
 
 4. ``` bash
+    # Linux
     nohup python temp_train.py > output.log 2>&1 &
+
+    # Windows
+    start /B python temp_train.py > output.log 2>&1
    ```
 
 
