@@ -7,12 +7,15 @@
 - [Git Example Worklfow](#git-example-worklfow)
 - [Weitere Git-Befehle](#weitere-git-befehle)
   - [Branches](#branches)
+- [Solve Merge Conflicts](#solve-merge-conflicts)
 - [Git GUI](#git-gui)
 - [Git Remote](#git-remote)
 - [Git Submodules](#git-submodules)
 - [Git Buch](https://git-scm.com/book/en/v2)
 
 > click the **rocket** for going **back**
+
+<br><br>
 
 ---
 ### Wichtigste Git-Befehle zum Merken
@@ -27,6 +30,10 @@ git clone <link>
 
 ​        -> legt ein existierendes Repository lokal an (Kopie)<br>        -> den Link finde man auf GitLab/GItHub bei dem Clone-Button (nicht ssh sondern HTTP kopieren) 
 
+
+```git
+git clone -b <branchname> <link>
+```
 
 
 ```git
@@ -77,7 +84,7 @@ git reset --hard
 ```
 ​		-> Setzt lokale Veränderungen zurück
 
-
+<br><br>
 
 ---
 ### Hinweise
@@ -92,7 +99,7 @@ git reset --hard
 
 -> Keine großen Dateien Comitten/Pushen!!!
 
-
+<br><br>
 
 ---
 ### Git Example Worklfow
@@ -132,7 +139,7 @@ Max Mustermann ist in einem Team zugeteilt worden und soll mit seinen Kameraden 
 Falls das Origin Repository in der Zwischenzeit Veränderungen durchgemacht hat. Muss man sein lokales Repository zuvor aktualisieren (git pull) und anschließend seine eigenen Änderungen pushen.
 
 
-
+<br><br>
 
 ---
 ### Weitere Git-Befehle
@@ -224,7 +231,72 @@ Falls man in einen anderen Branch arbeitet und nun fertig mit seiner Arbeit ist,
 
 > Denke daran, dass du zuvor deine Änderungen auf deinem Arbeitsbranch auch wirklich übernommen hast -> comitted und gepushed.
 
+<br><br>
 
+---
+### Solve Merge Conflicts
+
+---
+
+A merge conflict appears if there are 2 or more changes and git does not know which of these changes should keep or how to combine these 2 changes.<br>
+For example: " persons clone and change the same lines in a python file in different ways, then git does not know which of the changes should be used/how these changes should be merged. The merge conflict appears when one of the persons pushes his changes and the second person then have to pull (and then push) his changes but during the pull process git will raise a merge conflict and here is a way to solve it.
+
+> You find the name of your current branch with `git status`.
+
+1. **Commit your local changes** (and maybe push if possible -> for example in a forked repo it would still be possible)
+   ```git
+   git checkout main
+   git fetch origin
+   git pull origin main
+   ```
+2. (Only if you want to update an forked repo with his original) **Get the newest changes from a remote repo locally**
+   ```git
+   git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPO.git
+   git fetch upstream
+   git checkout main
+   git merge upstream/main
+   ```
+   main = use the name of your main branch
+   > Important: If you only want to update your main branch with a remote repo, then you can skip the next step (step 3), because you already start a merging here with the remote repo.
+3. **Start Merge locally**
+   ```git
+   git checkout <YOUR_BRANCH_NAME>
+   git merge main
+   ```
+   main = use the name of your main branch.<br>
+4. **Understand the conflicts**
+   Following command shows you open files with conflicts:
+   ```git
+   git status
+   ```
+   Then the files should contain marking like that:
+   ```text
+   <<<<<<< HEAD
+   your changes
+   =======
+   Changes from main
+   >>>>>>> main
+   ```
+   Where:
+   - `<<<<<<< HEAD` → start of your critical code
+   - `=======` → End of your critical changes and beginning of the critical changes of main
+   - `>>>>>>> main` → end of the critical changes from main
+5. **Solve conflict**<br>
+   Now just keep and change the conflict areas as you wish and the situation needs. Maybe keep only one of the changes or you combine them. At the end of your solution there should be no `<<<<<<< HEAD`, `=======`, `>>>>>>> main` anymore.
+6. **Push solved conflict**<br>
+   Now you just have to commit and push your changes. You may want to use your IDE (VSCode, ...) for that or Git GUI or Git Commandline:
+   ```git
+   git add conflict_file_1 conflict_file_2
+   git commit -m "solved merging XY changes by keeping Z and merging A with B because C"
+   git push
+   ```
+
+Cancelling a merge is done by:
+```git
+git merge --abort
+```
+
+<br><br>
 
 ---
 ### Git GUI
@@ -264,6 +336,7 @@ Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehe
 - Ctrl+M: Local Merge
 - F5: Rescan
 
+<br><br>
 
 ---
 ### Git Remote
@@ -280,6 +353,7 @@ git push github --all
 git remote remove github
 ```
 
+<br><br>
 
 ---
 ### Git Submodules
