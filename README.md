@@ -33,18 +33,18 @@ by Tobia Ippolito
 <br><br>
 
 ### <------ Python ------>
-### [Ananconda](#anaconda)
-### [Python Virtual Environments](#python-virtual-environments-1)
+### [Python Reference](https://github.com/xXAI-botXx/Python-Reference) 
 ### [Python Installation](#python-installation-1)
+### [Python Virtual Environments](#python-virtual-environments-1)
+### [Ananconda](#anaconda)
 ### [Python Tests](guides/Python_Tests.md)
 ### [Python Custom Errors/Exceptions](#python-custom-exceptions)
-### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [Custom Module](guides/Own_Python_Module.md)
+### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
-### [Console Input/Output Helper](https://github.com/xXAI-botXx/prime_printer)
-### [Python Reference](https://github.com/xXAI-botXx/Python-Reference) 
-### [Print Helper (prime)](https://github.com/xXAI-botXx/prime_printer)
+### [Print Helper (prime) -> Helper Module](https://github.com/xXAI-botXx/prime_printer)
+### [OpenGL with Python (PyOpenGL not moderngl)](https://github.com/xXAI-botXx/PyOpenGL-Reference)
 
 
 <br><br>
