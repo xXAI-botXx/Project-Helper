@@ -28,7 +28,7 @@ by Tobia Ippolito
 ### [Remote ML Workflow & GPU Management (with cmd/bash commands + SSH guide)](guides/Remote_ML_Workflow_and_GPU_Management.md)
 ### [Latex](https://github.com/xXAI-botXx/Latex)
 ### [Chocolately](guides/Chocolately.md)
-### [Docker](https://github.com/xXAI-botXx/Docker)
+### [Docker](./guides/Docker.md)
 
 <br><br>
 
