@@ -20,7 +20,8 @@ Table of Contents:
 - [Disk/Volumne Mounting](#mounting-a-disk--volume)
 - [Container Lifecycle and Data](#container-lifecycle-and-data)
 - [Networks](#networks)
-- [Templates](#templates)
+- [Template Images](#template-images)
+- [Use Cases](#use-cases)
 
 
 > click the **rocket** for going **back**
@@ -974,7 +975,7 @@ With `docker-compose`, you don’t need to manually run `docker network create` 
 
 ---
 
-### Templates
+### Template Images
 
 **Most important images:**
 * **NVIDIA / CUDA + Deep Learning**
@@ -1111,7 +1112,15 @@ With `docker-compose`, you don’t need to manually run `docker network create` 
 
     CMD ["python3", "test_cuda.py"]
     ```
-9. Linux on Windows via Docker -> start Ubuntu container and access the container via VSCode (install `Dev Containers Extension`)<br>
+
+<br><br>
+
+---
+
+### Use Cases
+
+1. **C++ Environment on Windows via Linux and Docker**<br>
+    Start Ubuntu container and access the container via VSCode (install `Dev Containers Extension`)<br>
     Image (saved as Dockfile or name.Dockerfile or Dockerfile.name:
     ```docker
     FROM ubuntu:22.04
@@ -1139,7 +1148,7 @@ With `docker-compose`, you don’t need to manually run `docker network create` 
     Run container (the same hint as the command before):
     ```docker
     cd D:\Users\Tobia\cpp-project && D:
-    docker run -it --rm -v .:/workspace -w /workspace cpp-dev bash
+    docker run -it --rm -v .:/workspace -v C:\Users\Tobia\external-libs\myLib:/external/myLib -w /workspace cpp-dev bash
     ```
     Now you can open VSCode and open your container with navigating to the container section in VSCode and then clicking on the running container -> something like "Attaching/open in VSCode Window" and then opening the `workspace` folder.
 
