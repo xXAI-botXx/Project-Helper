@@ -2,23 +2,23 @@
 
 [<img align="right" width=150px src='../res/rackete_2.png'></img>](../README.md)
 
-- [Wichtigste Git-Befehle zum Merken](#wichtigste-git-befehle-zum-merken)
-- [Hinweise](#hinweise)
-- [Git Example Worklfow](#git-example-worklfow)
-- [Weitere Git-Befehle](#weitere-git-befehle)
-  - [Branches](#branches)
-- [Solve Merge Conflicts](#solve-merge-conflicts)
-- [Git GUI](#git-gui)
-- [Git Remote](#git-remote)
-- [Git Submodules](#git-submodules)
-- [Git Buch](https://git-scm.com/book/en/v2)
+Contents:
+- [Git Helper](#git-helper)
+    - [Most important Git commands to remember](#most-important-git-commands-to-remember)
+    - [Notes](#notes)
+    - [Git Example Worklfow](#git-example-worklfow)
+    - [Additional Git-Commands](#additional-git-commands)
+    - [Solve Merge Conflicts](#solve-merge-conflicts)
+    - [Git GUI](#git-gui)
+    - [Git Remote](#git-remote)
+    - [Git Submodules](#git-submodules)
 
 > click the **rocket** for going **back**
 
 <br><br>
 
 ---
-### Wichtigste Git-Befehle zum Merken
+### Most important Git commands to remember
 
 ---
 
@@ -27,52 +27,52 @@
 ```git
 git clone <link>
 ```
-
-​        -> legt ein existierendes Repository lokal an (Kopie)<br>        -> den Link finde man auf GitLab/GItHub bei dem Clone-Button (nicht ssh sondern HTTP kopieren) 
+- Creates an existing repository locally (copy)
+- The link can be found on GitLab/GitHub next to the Clone button (copy HTTP, not ssh) 
 
 
 ```git
 git clone -b <branchname> <link>
 ```
+- clones a repository from a link with a specific branch
 
 
 ```git
 git add *
 ```
-​		-> staged alle Änderungen
+​- staged all Changes
 
 
 
 ```git
-git commit -m 'Beschreibung in a nutshell
-- warum die Änderung gut war
-- was genau bis wohin geändert wurde
+git commit -m 'Description in a nutshell
+- Why the change was beneficial
+- What exactly was changed and to what extent
 - ...'
 ```
-​		-> führt Änderungen im lokalen Repository durch
-
-​		-> Mit ' kann man mehrzeilige Kommentare verfassen und der Kommentar endet erst beim nächsten '
+- Makes changes in the local repository
+- With `'` you can write multi-line comments, and the comment only ends at the next `'` + enter-press
 
 
 
 ```git
 git push
 ```
-​		-> aktualisiert das globale Repository mit lokalen Änderungen
+- Updates the global repository with local changes
 
 
 
 ```git
 git pull
 ```
-​		-> aktualisiert das lokale Repository mit den globalen Änderungen
+- Updates the local repository with the global changes
 
 
 
 ```git
 git status
 ```
-​		-> informiert über den Zustand des lokalen Repositories im Vergleich zu dem globalen
+- Provides information about the status of the local repository in comparison to the global repository.
 
 
 ---
@@ -82,22 +82,19 @@ git status
 ```git
 git reset --hard
 ```
-​		-> Setzt lokale Veränderungen zurück
+- Resets local changes
 
 <br><br>
 
 ---
-### Hinweise
+### Notes
 
 ---
 
--> Man muss sich mit der Git Bash oder der Git CMD in einem Git repository befinden, damit diese Befehle (außer git clone) funktionieren.
-
--> Wenn man mit der Git Bash/Git CMD in einem Git Repository ist, wird einem der Branch angezeigt und dadurch kann man es leicht erkennen.
-
--> Außerdem kann man in einem Ordner mit **Rechtsklick** einfach die Git Bash in diesem Ordner starten (kann hilfreich sein).
-
--> Keine großen Dateien Comitten/Pushen!!!
+- You must be in a Git repository using Git Bash or Git CMD for these commands (except git clone) to work.
+- When you are in a Git repository using Git Bash/Git CMD, the branch is displayed, making it easy to identify.
+- You can also **right-click** in a folder to start Git Bash in that folder (this can be helpful).
+- Do not commit/push large files!!!
 
 <br><br>
 
@@ -106,130 +103,100 @@ git reset --hard
 
 ---
 
-Max Mustermann ist in einem Team zugeteilt worden und soll mit seinen Kameraden ein Projekt mit Git auf die Beine stellen. Aber wo fängt er an? <br>Die Musterschule hat bereits ein Git-Projekt (Repository) erstellt.
+John Doe has been assigned to a team and is supposed to set up a project with Git together with his teammates. But where does he start? <br>The Model School has already created a Git project (repository).
 
-0. VPN nicht vergessen. Empfehlung: Cisco AnyConnect (siehe PDF in Discord => Treffpunkt -> Pinns)
-
-1. [Git installieren](https://git-scm.com/)
-
-2. Git Einstellungen tätigen
-
+0. Don't forget VPN. Recommendation: Cisco AnyConnect (see PDF in Discord => Meeting place -> Pins)
+1. [Install Git](https://git-scm.com/)
+2. Configure Git settings<br>
    -> git config --global user.name [name]<br>-> git config --global user.email [email]
-
-   
-
-3. Git-Projekt auf den lokalen Rechner klonen/kopieren
-
+3. Clone/copy Git project to local computer<br>
    -> git clone [link]
-
-   
-
-4. Max Mustermann arbeitet nun am Projekt und programmiert fleißig (ganz normal so wie immer)
-
-5. Nun möchte Max die Änderungen lokal Übernehmen.
-
-   -> git add *<br>-> git commit -m "beschreibung"
-
-   
-
-6. Zu guter Letzt will er seine lokalen Änderungen mit seinem Team teilen
-
+4. Max Mustermann is now working on the project and programming diligently (as usual)
+5. Now Max wants to apply the changes locally.<br>
+   -> git add *<br>-> git commit -m “description”
+6. Finally, he wants to share his local changes with his team<br>
    -> git push
 
-Falls das Origin Repository in der Zwischenzeit Veränderungen durchgemacht hat. Muss man sein lokales Repository zuvor aktualisieren (git pull) und anschließend seine eigenen Änderungen pushen.
+If the origin repository has undergone changes in the meantime, you must first update your local repository (git pull) and then push your own changes.
 
 
 <br><br>
 
 ---
-### Weitere Git-Befehle
+### Additional Git-Commands
 
 ---
 
 ```git 
 git checkout <commit sha>
 ```
-
-​		-> ladet den angegebenen Commit (so kann man frühere Versionen besuchen)
+- loads the specified commit (allowing you to view earlier versions)
 
 ```git
 git init
 ```
-​		-> Erzeugt ein neues Git-Repository im aktuellen Ordner 
+- Creates a new Git repository in the current folder 
 
 ```git 
 git config --global user.name <name>
 ```
-
-​		-> Legt den verwendeten Namen für Git auf dem Rechner fest
-
-​        -> ohne --global wird dieser nur für das eine Git-Projekt festgelegt
+- Sets the name used for Git on the computer
+- Without --global, this is only set for the one Git project
 
 ```git 
 git config --global user.email <email>
 ```
-
-​		->  Legt die verwendete E-Mail-Adresse für Git auf dem Rechner fest
-
-​		-> ohne --global wird dieser nur für das eine Git-Projekt festgelegt
-
-​		-> nur **git config user.email** zeigt die aktuell eingetragene Email für das Projekt 
+- Sets the email address used for Git on the computer
+- Without --global, this is only set for the one Git project
+- Only **git config user.email** shows the email currently entered for the project 
 
 ```git 
 git log
 ```
-
-​		-> Zeigt die komplette Commit-Historie, hierbei sin einige [Optionen](https://git-scm.com/book/de/v2/Git-Grundlagen-Anzeigen-der-Commit-Historie) verfügbar
+- Shows the complete commit history; several [options](https://git-scm.com/book/de/v2/Git-Grundlagen-Anzeigen-der-Commit-Historie) are available here.
 
 **<a name='branches'>Branching:</a>**
 
 ```git 
 git branch
 ```
-
-​		-> Liste aller Branches
+- List of all branches
 
 ```git 
 git branch <new-branch-name>
 ```
-
-​		-> Erzeugt einen neuen Branch aus dem aktuellen Branch
+- Creates a new branch from the current branch
 
 ```git 
 git branch <new-branch-name> <base-branch-name>
 ```
-
-​		-> Erzeugt einen neuen Branch aus dem angegebenen Base-Branch
+- Creates a new branch from the specified base branch
 
 ```git 
 git checkout <branch-name>
 ```
-
-​		-> Ladet den angegebenen Branch
+- Load the specified branch
 
 ```git 
 git checkout -b <new-branch-name>
 ```
-
-​		-> Erzeugt neuen branch und ladet diesen direkt
+- Creates a new branch and loads it directly
 
 ```git 
 git merge <branch>
 ```
-
-​		-> Merged den angegebenen Branch in den aktuellen Branch
+- Merges the specified branch into the current branch
 
 ```git 
 git branch -d <branch-name>
 ```
-
-​		-> Schließt den angegebenen Branch
-
+- Closes the specified branch
 
 
-Falls man in einen anderen Branch arbeitet und nun fertig mit seiner Arbeit ist, wechselt man erstmal zum 'master'-Branch (oder wie dieser benannt wurde) -> checkout command. Anschließend merged man den anderen Branch mit dessen Änderungen zum aktuellen Branch -> mit dem merg command.  Anschließend kann der branch geschlossen werden. 
+If you are working in another branch and have now finished your work, first switch to the ‘master’ branch (or whatever it is called) -> checkout command. Then merge the other branch with its changes into the current branch -> using the merg command.  The branch can then be closed. 
 
-> Denke daran, dass du zuvor deine Änderungen auf deinem Arbeitsbranch auch wirklich übernommen hast -> comitted und gepushed.
+> Remember to make sure you have actually applied your changes to your working branch -> committed and pushed.
+
 
 <br><br>
 
@@ -303,30 +270,63 @@ git merge --abort
 
 ---
 
-Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehen können? Genau dafür existiert die Git GUI und die Arbeit damit ist echt einfach.
+Don't feel like memorizing commands and would rather see all changes clearly? That's exactly what Git GUI is for, and working with it is really easy.
 
-**Starten**<br>Genau wie die Git Bash kann die Git GUI per Rechtsklick direkt im Wunschordner/Git-Repository geöffnet werden. Andernfalls kann man die Git GUI auch so starten und auf **Open Existing Repository** gehen (beim Startbildschirm kann man alternativ auch ein neues Repository erstellen oder ein Repository klonen).
+<br><br>
 
-**Bedienen**<br>Alle Änderungen sollten nun im *Unstaged Changes* Bereich links oben angezeigt werden. Falls nicht den *Rescan* Button drücken (etwa in der Mitte, der oberste Button von mehreren Buttons).<br>Nun wählt man alle Änderungen aus, welche man auch wirklich ändern möchte und staged sie indem man in der Menübar *>Commit>Stage to Commit* wählt. Und bei dem Reiter *Commit* kann man auch *Unstage From Commit* wählen um Änderungen nicht mehr zu Commiten (in den Unstaged Bereich zurück).<br>Wenn alle Änderungen gewählt/gestaged wurden, kann man die Änderungen im lokalen Repository ausführen (committen). Hierzu den *Commit*-Button drücken.<br>Falls ihr eure Änderungen auch mit dem Original Repository aktualisieren wollt, drückt den *Push*-Button (das kann auch zu einem beliebig späteren Zeitpunkt erfolgen).<br><br>Wurde etwas im Original Repository (nicht lokal) geändert und ihr wollt diese Änderungen (weil ihr beispielsweise Pushen wollt), so müssen 2 Schritten getan werden.<br>1. *> Remote > Fetch from*<br>2.*> Merge > Local Merge*<br>(Tatsächlich macht das der git pull Befehl intern auch)
+**Getting started**<br>
+Just like Git Bash, Git GUI can be opened by right-clicking directly in the desired folder/Git repository and the looking for a `Open with Git GUI`. Alternatively, you can start Git GUI and go to **Open Existing Repository** (on the start screen, you can also create a new repository or clone a repository).<br>
+If you have an repository online on GitHub or GitLab, then click on **Clone Existing Repository**. Then choose the source repository (the http or ssh link) and pick the target folder + don't forget to add a folder name (Git GUI will create the folder for you). 
 
-**Worklflow Beispiel**<br>1. Git GUI an gewünschtem Ort öffnen (wo Projektordner erscheinen soll) <br>    -> mit Rechtsklick und Git GUI öffnen<br>2. *Clone Existing Repository* wählen<br>    -> Source Directory: HTTP-Link von Repository<br>    -> Target Directory: Ordnerpfad/Ordner, wo noch nicht exstitiert, wo das Projekt rein kommt<br>3. Nun kann man fleißig arbeiten (Dateien erstellen, bearbeiten, löschen)<br>4. Auf *Rescan* drücken<br>5. Alle Änderungen, die man ändern möchte, stagen (in *Commit* Reiter)<br>6. Commit Nachricht schreiben und auf *Commit* drücken<br>7. Repository aktualisieren (nicht immer nötig)<br>    -> *Remote > Fetch From*<br>    -> *Merge > Local Merge*<br>8. Auf *Push* drücken
+> Important: On the top-left corner there should be the information of the current local branch name. Make sure that it is the same branch name, as the one in your GitHub. **You might want to rename your branch (`branch > rename`) from `master` to `main`** as it is for me most of the times. Or sometimes want to checkout to another branch (`branch > checkout`). <br>Explanation: Git GUI clones your main branch but renames the local branch to master and when you push, GitHub will create you a new branch with the name master. Therefore a simple renaming solves this problem.
 
-**Weitere Features**
+<br><br>
 
-- Unter *> Repository* kann man sich einen oder alle Branches Visualisieren lassen (drücke auf *Visualize ...*)
+**Operation**<br>
+All changes should now be displayed in the *Unstaged Changes* area at the top left. If not, press the *Rescan* button (roughly in the middle, the top button of several buttons).<br>Now select all the changes you really want to change and stage them by selecting *>Commit>Stage to Commit* in the menu bar. In the *Commit* tab, you can also select *Unstage From Commit* to undo changes (return them to the Unstaged area).<br>Once all changes have been selected/staged, you can execute (commit) the changes in the local repository. To do this, press the *Commit* button. <br>If you also want to update your changes with the original repository, press the *Push* button (this can also be done at any later time).<br><br>If something has been changed in the original repository (not locally) and you want to apply these changes (because you want to push, for example), you need to do two things. <br>1. *> Remote > Fetch from*<br>2.*> Merge > Local Merge*<br>(This is actually what the git pull command does internally).
 
-- Unter *> Tools > Add...* kann man Git Befehle hinzufügen, welche man auf Knopfdruck durchführen kann<br>        -> *Name* ist nur ein beliebiger Name<br>        -> *Command* ist dann der git Befehl (git add * oder git pull ...)
-- Unter *> Branch* kann man neue Branches erstellen oder auch einen checkout in andere Branches durchführen
+<br><br>
 
-**Hinweise**
+**Workflow example**
+1. Open Git GUI at the desired location (where the project folder should appear). <br>    
+   -> Right-click and open Git GUI. 
+2. Select *Clone Existing Repository*<br>
+   -> Source Directory: HTTP link from repository <br>
+   -> Target Directory: Folder path/folder where the project will be placed + folder name<br>
+3. Check the local branch name (main - master conflict -> maybe rename)
+4. Now you can work diligently (create, edit, delete files)
+5. Press *Rescan*
+6. Stage all changes you want to commit (in the *Commit* tab).
+7. Write a commit message and click *Commit*.
+8. Update the repository (not always necessary).<br>    
+   -> *Remote > Fetch From*<br>    
+   -> *Merge > Local Merge*<br>
+9. Click *Push*.
 
-- Keine großen Dateien Comitten/Pushen!!!
--  Wenn push nicht funktioniert, muss das Repository aktualisiert werden.<br>    1. *Remote > Fetch From*<br>    2. *Merge > Local Merge*
--  man kann auch gerne eine Kombi mit Git Bash und Git GUI wählen, denn beide haben Vor- und Nachteile
-- Unter *> Repository > Git Bash* kann die Git Bash schnell geöffnet werden
-- *git pull* Befehl bei *Tools* erzeugen, welcher einiges erleichtert (siehe komplizieren Weg oben)
+<br><br>
 
-**Wichtige Shortcuts**
+**Additional features**
+
+- Under *> Repository*, you can visualize one or all branches (click on *Visualize ...*)
+- Under *> Tools > Add...*, you can add Git commands that can be executed at the touch of a button<br>        -> *Name* is just any name<br>        
+   -> *Command* is then the git command (`git add *` or `git pull origin main` ...)
+- Under *> Branch*, you can create new branches or perform a checkout to other branches
+
+<br><br>
+
+**Notes**
+
+- Do not commit/push large files!!!
+- If push does not work, the repository must be updated.
+   1. *Remote > Fetch From*
+   2. *Merge > Local Merge*
+- You can also choose a combination of Git Bash and Git GUI, as both have advantages and disadvantages
+- Under *> Repository > Git Bash*, you can quickly open Git Bash
+- Create a *git pull* command in *Tools*, which makes things a lot easier (see complicated method above)
+
+<br><br>
+
+**Important shortcuts**
 
 - Ctrl+T/Ctrl+U: Stage/unstage selected file
 - Ctrl+I: Stage all files (asks if you want to add new files if there are any)
@@ -343,9 +343,9 @@ Keine Lust die Befehle zu merken und willst du lieber alle Änderungen klar sehe
 
 ---
 
-Es ist möglich Projekte von Gitlab auf Github zu übertragen und andersherum. Beispielsweise kannst du ein geheimes Projekt als privates Github Projekt als Backup uploaden.
+It is possible to transfer projects from Gitlab to Github and vice versa. For example, you can upload a secret project as a private Github project as a backup.
 
-Dazu:
+To do this:
 
 ```bash
 git remote add github url-of-empty-github-projekt
@@ -360,7 +360,7 @@ git remote remove github
 
 ---
 
-Klonen eines Git Repos mit Submodules:
+Cloning a Git repository with submodules:
 ```bash
 git clone <url>
 git submodule init
@@ -368,12 +368,12 @@ git submodule update
 ```
 
 
-Adden eines Submodules
+Adding a submodule:
 ```bash
 git submodule add <url>
 ```
 
-Entfernen eines Submodules:
+Removing a submodule:
 ```bash
 git rm module-folder-name
 git commit -m "removed submodule"
