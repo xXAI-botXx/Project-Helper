@@ -1,0 +1,48 @@
+[submodule "external/Latex"]
+	path = external/Latex
+	url = https://github.com/xXAI-botXx/Latex
+[submodule "external/Python-Reference"]
+	path = external/Python-Reference
+	url = https://github.com/xXAI-botXx/Python-Reference
+[submodule "external/prime_printer"]
+	path = external/prime_printer
+	url = https://github.com/xXAI-botXx/prime_printer
+[submodule "external/Wind_Forge"]
+	path = external/Wind_Forge
+	url = https://github.com/xXAI-botXx/Wind_Forge.git
+[submodule "external/CPP"]
+	path = external/CPP
+	url = https://github.com/xXAI-botXx/CPP
+[submodule "external/AI"]
+	path = external/AI
+	url = https://github.com/xXAI-botXx/AI
+[submodule "external/HelpJl"]
+	path = external/HelpJl
+	url = https://github.com/xXAI-botXx/HelpJl
+[submodule "external/PyTorch-Reference-Extern"]
+	path = external/PyTorch-Reference-Extern
+	url = https://github.com/xXAI-botXx/PyTorch-Reference-Extern
+[submodule "external/PyTorch-Reference"]
+	path = external/PyTorch-Reference
+	url = https://github.com/xXAI-botXx/PyTorch-Reference
+[submodule "external/TensorFlow-Reference"]
+	path = external/TensorFlow-Reference
+	url = https://github.com/xXAI-botXx/TensorFlow-Reference
+[submodule "external/Data-Engineer-Reference"]
+	path = external/Data-Engineer-Reference
+	url = https://github.com/xXAI-botXx/Data-Engineer-Reference
+[submodule "external/computer-vision"]
+	path = external/computer-vision
+	url = https://github.com/xXAI-botXx/computer-vision
+[submodule "external/Deep-Learning-for-Medical-Images"]
+	path = external/Deep-Learning-for-Medical-Images
+	url = https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images
+[submodule "external/GANs"]
+	path = external/GANs
+	url = https://github.com/xXAI-botXx/GANs
+[submodule "external/Reinforcement_Learning"]
+	path = external/Reinforcement_Learning
+	url = https://github.com/xXAI-botXx/Reinforcement_Learning
+[submodule "external/Project_Transformer"]
+	path = external/Project_Transformer
+	url = https://github.com/xXAI-botXx/Project_Transformer

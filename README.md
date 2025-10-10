@@ -1,19 +1,32 @@
 <h1 align="center"> Project-Helper</h1>
 
-by Tobia Ippolito
+<p align="right">by Tobia Ippolito</p>
+
 <br>
 <br>
 
-<p align="center">🟡 Welcome here, you are save here! 🟡</p>
+<p align="center">This is a library of guides and references. The library continuously grows since 2023.</p>
+
+
 <br><br>
 
-<p align="center">In this repository you find helpful guides to specific topics of data science projects. So rest here and let help you.</p>
+---
 
 <br><br>
 
-<div align="center">>>> Notice that this repository grow over the time <<<</div>
+Local Installation of the Project-Helper Guides:
+- Download the repo as `.zip` file
+- Clone Repo:
+  - Via Git GUI [see here](./guides/Git_Helper.md#git-gui) + make sure to check the `recursively clone submodules too` box
+  - Via Git bash [see here](./guides/Git_Helper.md#git-gui)
+    ```git
+    git clone https://github.com/xXAI-botXx/Project-Helper.git
+    git submodule init
+    git submodule update
+    ```
+- Download the PDF file *(coming in future)*
 
-
+<br><br>
 
 ---
 
@@ -26,14 +39,14 @@ by Tobia Ippolito
 ### <------ General ------>
 ### [Git Guide](guides/Git_Helper.md)
 ### [Remote ML Workflow & GPU Management (with cmd/bash commands + SSH guide)](guides/Remote_ML_Workflow_and_GPU_Management.md)
-### [Latex](https://github.com/xXAI-botXx/Latex)
+### [Latex](./external/Latex/README.md) [[repo link](https://github.com/xXAI-botXx/Latex)]
 ### [Chocolately](guides/Chocolately.md)
 ### [Docker](./guides/Docker.md)
 
 <br><br>
 
 ### <------ Python ------>
-### [Python Reference](https://github.com/xXAI-botXx/Python-Reference) 
+### [Python Reference](./external/Python-Reference/README.md) [[repo link](https://github.com/xXAI-botXx/Python-Reference)]
 ### [Python Installation](#python-installation-1)
 ### [Python Virtual Environments](#python-virtual-environments-1)
 ### [Ananconda](#anaconda)
@@ -43,24 +56,23 @@ by Tobia Ippolito
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
-### [Print Helper (prime) -> Helper Module](https://github.com/xXAI-botXx/prime_printer)
-### [OpenGL with Python (PyOpenGL not moderngl)](https://github.com/xXAI-botXx/Wind_Forge)
-
+### [Print Helper (prime) -> Helper Module](./external/prime_printer/README.md) [[repo link](https://github.com/xXAI-botXx/prime_printer)]
+### [OpenGL with Python (PyOpenGL not moderngl)](./external/Wind_Forge/README.md) [[repo link](https://github.com/xXAI-botXx/Wind_Forge)]
 
 <br><br>
 
 ### <------ Artificial Intelligence ------>
-### [AI (general)](https://github.com/xXAI-botXx/AI)
-### [Data Engineer Reference](https://github.com/xXAI-botXx/Data-Engineer-Reference) 
-### [OpenCV](https://github.com/xXAI-botXx/computer-vision)
-### [Deep Learning for Medical Images](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)
-### [GANs](https://github.com/xXAI-botXx/GANs)
-### [Reinforcement Learning](https://github.com/xXAI-botXx/Reinforcement_Learning)
-### [Transformer](https://github.com/xXAI-botXx/Project_Transformer) 
-### [TensorFlow Reference](https://github.com/xXAI-botXx/TensorFlow-Reference) 
-### [PyTorch Reference](https://github.com/xXAI-botXx/PyTorch-Reference) 
-### [PyTorch Reference (not from me)](https://github.com/xXAI-botXx/PyTorch-Reference-Extern)
-### [Julia](https://github.com/xXAI-botXx/HelpJl)
+### [AI (general)](./external/AI/README.md) [[repo link](https://github.com/xXAI-botXx/AI)]
+### [Data Engineer Reference](./external/Data-Engineer-Reference/README.md) [[repo link](https://github.com/xXAI-botXx/Data-Engineer-Reference)]
+### [OpenCV](./external/computer-vision/README.md) [[repo link](https://github.com/xXAI-botXx/computer-vision)]
+### [Deep Learning for Medical Images](./external/Deep-Learning-for-Medical-Images/README.md) [[repo link](https://github.com/xXAI-botXx/Deep-Learning-for-Medical-Images)]
+### [GANs](./external/GANs/README.md) [repo link](https://github.com/xXAI-botXx/GANs)
+### [Reinforcement Learning](./external/Reinforcement_Learning/README.md) [[repo link](https://github.com/xXAI-botXx/Reinforcement_Learning)]
+### [Transformer](./external/Project_Transformer/README.md) [[repo link](https://github.com/xXAI-botXx/Project_Transformer)]
+### [TensorFlow Reference](./external/TensorFlow-Reference/README.md) [[repo link](https://github.com/xXAI-botXx/TensorFlow-Reference)]
+### [PyTorch Reference](./external/PyTorch-Reference/README.md) [[repo link](https://github.com/xXAI-botXx/PyTorch-Reference)]
+### [PyTorch Reference (not from me)](./external/PyTorch-Reference-Extern/README.md) [[repo link](https://github.com/xXAI-botXx/PyTorch-Reference-Extern)]
+### [Julia](./external/HelpJl/README.md) [[repo link](https://github.com/xXAI-botXx/HelpJl)]
 
 <!--
 <br><br>
@@ -73,7 +85,7 @@ by Tobia Ippolito
 <br><br>
 
 ### <------ C++ ------>
-### [C++](https://github.com/xXAI-botXx/CPP)
+### [C++](./external/CPP/README.md) [[repo link](https://github.com/xXAI-botXx/CPP)]
 ### [Doxygen](guides/Doxygen.md)
 
 
