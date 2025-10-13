@@ -8,6 +8,7 @@ Contents:
     - [Notes](#notes)
     - [Git Example Worklfow](#git-example-worklfow)
     - [Additional Git-Commands](#additional-git-commands)
+      - [Branching:](#branching)
     - [Solve Merge Conflicts](#solve-merge-conflicts)
     - [Git GUI](#git-gui)
     - [Git Remote](#git-remote)
@@ -23,66 +24,92 @@ Contents:
 ---
 
 
-
+Cloning an existing repository:
 ```git
 git clone <link>
 ```
-- Creates an existing repository locally (copy)
+- Creates a copy
 - The link can be found on GitLab/GitHub next to the Clone button (copy HTTP, not ssh) 
+- If you shared SSH with GitHub, then you also can use SSH instead of HTTP
 
+<br><br>
 
+Cloning an existing repository with a specific branch:
 ```git
 git clone -b <branchname> <link>
 ```
-- clones a repository from a link with a specific branch
 
+<br><br>
 
+Stage all changes (add all changes to make them to the new standard via commit + push):
 ```git
 git add *
 ```
-​- staged all Changes
 
+<br><br>
 
-
+Add a message to your changes (this is  must!):
 ```git
 git commit -m 'Description in a nutshell
 - Why the change was beneficial
 - What exactly was changed and to what extent
 - ...'
 ```
-- Makes changes in the local repository
 - With `'` you can write multi-line comments, and the comment only ends at the next `'` + enter-press
 
+<br><br>
 
+Update the origin repository with the staged changes + the commit message:
 
 ```git
 git push
 ```
-- Updates the global repository with local changes
 
+```git
+git push origin main
+```
+- Where `main` is the branch name (change it if needed)
 
+If you want that Git remembers where to push then set the upstream:
+```git
+git push -u origin main
+```
+- Where `main` is the branch name (change it if needed)
 
+Linking is also possible afterwards:
+```bash
+git branch --set-upstream-to=origin/main
+```
+- Where `main` is the branch name (change it if needed)
+
+<br><br>
+
+> Quick explaination to `git push origin main` and linking (and remotes):  `git push` just tells git to push your changes, but not where to push. Most of the time this is already setted up if you clone from GitHub but sometimes it can happen and the setup is wrong or not completed, so listen. The `origin main` part tells where to push the changes to. `origin` is the name of the remote and `main` is the specific branch. Remotes are just other git repositores, in this case most likely the repository on Github or GitLab. But you can also add more than one remote and push to both ([click here to see this in more detail](#git-remote)). What git branches are [is explained here](#branching).<br> The command `git branch --set-upstream-to=origin/main` or the `-u` in the push command now sets the remote and the branch as default. If you next time right `git push` or `git pull`, your repo is linked/set to the setted remote + branch.
+
+<br><br>
+
+Updating the local repository with the global changes:
 ```git
 git pull
 ```
-- Updates the local repository with the global changes
 
+```git
+git pull origin main
+```
 
+<br><br>
 
+Getting informations about the state of the local repository compred to the global repository:
 ```git
 git status
 ```
-- Provides information about the status of the local repository in comparison to the global repository.
 
+<br><br>
 
----
-
-
-
+Deleting local changes (dangerous!):
 ```git
 git reset --hard
 ```
-- Resets local changes
 
 <br><br>
 
@@ -91,10 +118,18 @@ git reset --hard
 
 ---
 
+- Git only saves changes (but in some files it can not detect the changes and instead it saves the whole new file as change) + and saves these changes forever! You can always go back to your first changes you made.
 - You must be in a Git repository using Git Bash or Git CMD for these commands (except git clone) to work.
 - When you are in a Git repository using Git Bash/Git CMD, the branch is displayed, making it easy to identify.
 - You can also **right-click** in a folder to start Git Bash in that folder (this can be helpful).
 - Do not commit/push large files!!!
+  - Images
+  - Databases
+  - PDF Files
+  - All Files which changes while you do not change your code
+  - But there are always exceptions
+  - You should know that pushed changed will never leave the memory of your project and so your project will grow and grow
+  - It is also not ideal to handle files where changes can't be detected by Git (For example if you change one pixel in an image, git can not detect/save this small change instead it have to save the whole new image as "change")
 
 <br><br>
 
@@ -127,70 +162,118 @@ If the origin repository has undergone changes in the meantime, you must first u
 
 ---
 
+Loading a specific commit (seeing earlier states of your repo):
 ```git 
 git checkout <commit sha>
 ```
-- loads the specified commit (allowing you to view earlier versions)
 
+<br><br>
+
+Creating a new Git repository in the current folder:
 ```git
 git init
 ```
-- Creates a new Git repository in the current folder 
 
+<br><br>
+
+Setting the name of the git user:
 ```git 
 git config --global user.name <name>
 ```
-- Sets the name used for Git on the computer
-- Without --global, this is only set for the one Git project
+- Example: `git config --global user.name xXAI-botXx`
+- You can also set it different for single projects: `git config user.name <name>`
+- Just use your GitHub name for example
 
+<br><br>
+
+Setting the email of the git user:
 ```git 
 git config --global user.email <email>
 ```
-- Sets the email address used for Git on the computer
-- Without --global, this is only set for the one Git project
-- Only **git config user.email** shows the email currently entered for the project 
+- You can also set it different for single projects: `git config user.email <email>`
 
+<br><br>
+
+Showing the complete commit history:
 ```git 
 git log
 ```
-- Shows the complete commit history; several [options](https://git-scm.com/book/de/v2/Git-Grundlagen-Anzeigen-der-Commit-Historie) are available here.
+- several [options](https://git-scm.com/book/de/v2/Git-Grundlagen-Anzeigen-der-Commit-Historie) are available here
 
-**<a name='branches'>Branching:</a>**
+<br><br>
 
+#### Branching:
+
+Branches are just like alternative realities for the project. So you can make a branch, then implement a new feature and when its working you can merge your new changes (your branch) with the main branch. In that way multiple people can work on the same repository without destroying anything.<br>
+You also can use branches to develope an alternative version of your software and still can update some changes through the branches. Or you can store completly different informations, for example storing code for a website in a branch (but this is more special and only recommended in a few cases, though it is not meant for that).
+
+<br><br>
+
+List of all available branches:
 ```git 
 git branch
 ```
-- List of all branches
 
+<br><br>
+
+Creating a new branch from the current branch:
 ```git 
 git branch <new-branch-name>
 ```
-- Creates a new branch from the current branch
 
+<br><br>
+
+Creating a new branch from the specified base branch:
 ```git 
 git branch <new-branch-name> <base-branch-name>
 ```
-- Creates a new branch from the specified base branch
 
+<br><br>
+
+Loading a specified branch:
 ```git 
 git checkout <branch-name>
 ```
-- Load the specified branch
 
+<br><br>
+
+Creating a new branch and loads it directly:
 ```git 
 git checkout -b <new-branch-name>
 ```
-- Creates a new branch and loads it directly
 
-```git 
+<br><br>
+
+Merging a specified branch into the current branch:
+```bash 
 git merge <branch>
 ```
-- Merges the specified branch into the current branch
 
-```git 
+<br><br>
+
+Closing a specified branch:
+```bash 
 git branch -d <branch-name>
 ```
-- Closes the specified branch
+
+<br><br>
+
+Rename a Branch:
+```bash 
+git branch -m <branch-name> <new-branch-name>
+```
+
+Or rename current branch:
+```bash
+git branch -m <new-branch-name>
+```
+
+<br><br>
+
+Set default "main/master" branch name:
+```bash
+git config --global init.defaultBranch main
+```
 
 
 If you are working in another branch and have now finished your work, first switch to the ‘master’ branch (or whatever it is called) -> checkout command. Then merge the other branch with its changes into the current branch -> using the merg command.  The branch can then be closed. 
@@ -278,7 +361,7 @@ Don't feel like memorizing commands and would rather see all changes clearly? Th
 Just like Git Bash, Git GUI can be opened by right-clicking directly in the desired folder/Git repository and the looking for a `Open with Git GUI`. Alternatively, you can start Git GUI and go to **Open Existing Repository** (on the start screen, you can also create a new repository or clone a repository).<br>
 If you have an repository online on GitHub or GitLab, then click on **Clone Existing Repository**. Then choose the source repository (the http or ssh link) and pick the target folder + don't forget to add a folder name (Git GUI will create the folder for you). 
 
-> Important: On the top-left corner there should be the information of the current local branch name. Make sure that it is the same branch name, as the one in your GitHub. **You might want to rename your branch (`branch > rename`) from `master` to `main`** as it is for me most of the times. Or sometimes want to checkout to another branch (`branch > checkout`). <br>Explanation: Git GUI clones your main branch but renames the local branch to master and when you push, GitHub will create you a new branch with the name master. Therefore a simple renaming solves this problem.
+> Important: On the top-left corner there should be the information of the current local branch name. Make sure that it is the same branch name, as the one in your GitHub. **You might want to rename your branch (`branch > rename`) from `master` to `main`** as it is for me most of the times. Or sometimes want to checkout to another branch (`branch > checkout`). <br>Explanation: Git GUI clones your main branch but renames the local branch to master and when you push, GitHub will create you a new branch with the name master. Therefore a simple renaming solves this problem.<br><br>A longtime solution is to open git bash or add a git command vi Git GUI `tools > Add...` and run `git config --global init.defaultBranch main`.
 
 <br><br>
 
