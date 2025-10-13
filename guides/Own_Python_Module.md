@@ -3,16 +3,20 @@
 [<img align="right" width=150px src="../res/rackete_2.png"></img>](../README.md)
 
 
-- [Motivation](#motivation)
-- [Local package](#local-package)
-- [Pip package](#pip-package)
-- [Real Example (pip module)](#real-example-pip-module)
+- [Own Python Module](#own-python-module)
+    - [Motivation](#motivation)
+    - [Local Package](#local-package)
+    - [Package Access](#package-access)
+    - [Pip Package](#pip-package)
+    - [Real Example (pip-module)](#real-example-pip-module)
+      - [Another example](#another-example)
 
 
 
 > click the **rocket** for going **back**
 
 
+<br><br>
 
 ---
 ### Motivation
@@ -40,21 +44,26 @@ from My_Project import my_helper
 
 And exporting your lib is also not possible. 
 
-
+<br><br>
 
 ---
 ### Local Package
 
+Let's first clear the namings. A `module` is  just any python file in python. So a project creates most likely multiple `modules` which contains, variables, classes or functions.<br>
+`Packages` are a collection of python `modules` accessible from outside of this specific `package`. `Packages` can be used locally but also be provided via the package-system from python.
+
 For a local package you just need to add a ```__init__.py``` in every folder of your project which contains a python file. These init files controls which content is accessable in the next layer. The most top init controls therefore which methods, variables and other things are accessable from outside your package.
 
 For example:
-```
+
+```text
 |--- My_Project
     |--- my_helper.py
 |--- my_active_script.py
 ```
 
 The init file can contain:
+
 ```python
 from .my_helper import some_function, SomeClass
 # or:
@@ -62,13 +71,209 @@ from . import my_helper
 ```
 
 Now you can do:
+
 ```python
 from My_Project import some_function
 # or:
 from My_Project import my_helper
+# or:
+import My_Project as mp
+mp.some_function()
+```
+
+<br><br>
+
+---
+### Package Access
+
+Through the `__init__.py` file, the module controls which content should be vailable through its package import.<br>
+The way you import the modules in your package decides the way you access them later on.
+
+If the package is not in the current folder and not in the pythons side-packages folder, then you need to tell python to tell on also another location for the packages:
+
+```python
+import sys
+sys.path += ["../my_awesome_libs"]
+```
+
+Before we look at the different ways to use the __init__.py, we have to understand following:
+
+Package structure:
+
+```text
+|--- my_package
+    |--- __init__.py
+    |--- my_module_1.py
+    |--- my_folder
+        |--- my_module_2.py
+|--- main.py (notice: not part of the package)
+```
+
+wrong __init__.py:
+
+```python
+import my_module_1
+from myfolder import my_module_2
+```
+
+Called by `main.py`:
+
+```python
+import my_package as mp
+```
+
+The problem here is that python will search then my_module_1 and the my_folder in the path where it gets runned, so in this case it would search in the top folder (where my_package folder and main.py are) for these modules.
+
+So you should use the `.` to clearify that the search-path is the current package folder. Example:
+
+```python
+from . import my_module_1
+from .myfolder import my_module_2
+```
+
+<br><br>
+
+So let's look at the different ways to provide your package and how the user can the use it.
+
+<br><br>
+
+**Modular API**
+
+We expect the user to use our package as:
+
+```python
+import my_package as mp
+```
+
+If our `__init__.py` looks like that:
+
+```python
+from . import my_module_1
+from .myfolder import my_module_2
+```
+
+Then the usage is like:
+
+```python
+import my_package as mp
+
+mp.my_module_1.func()
+mp.my_module_2.func()
+```
+
+<br><br>
+
+If we want to use `my_folder` in the call, we can change the import of our package:
+
+`__init__.py`:
+
+```python
+from . import my_module_1
+from . import my_folder
+```
+
+And you need now to clearify in `my_folder` which modules this folder provides with a `__ini__.py` file inside of this folder:
+
+`__init__.py`:
+
+```python
+from . import my_module_2
+```
+
+`main.py`:
+
+```python
+import my_package as mp
+
+mp.my_module_1.func()
+mp.my_folder.my_module_2.func()
+```
+
+> In tht way you have full control over how functions should be available. Should they be called via the module name? And also if folders should have been used or not and even renamings are via `as` possible.
+
+Renaming showcase:
+
+`__init__.py`:
+
+```python
+from . import my_module_1
+from . import my_folder as mf
+```
+
+`my_folder > __init__.py`:
+
+```python
+from . import my_module_2
+```
+
+`main.py`:
+
+```python
+import my_package as mp
+
+mp.my_module_1.func()
+mp.mf.my_module_2.func()
+```
+
+<br><br>
+
+**Flat API**
+
+`__init__.py`:
+
+```python
+from .my_module_1 import func  # or maybe *
+from . import myfolder
+# or 
+# from .my_folder.my_module_2 import func
+```
+
+`my_folder > __init__.py`:
+
+```python
+from . import func  # or maybe *
+```
+
+Then the usage is like:
+
+```python
+import my_package as mp
+
+mp.func()
+mp.my_folder.func()
 ```
 
 
+> And of course you can mix flat and modular APIs and decide which Module is available via which call.
+
+<br><br>
+
+Ok but what changes if the import from the user is different?
+
+```python
+from . import my_module_1
+from . import my_folder as mf
+```
+
+`my_folder > __init__.py`:
+
+```python
+from . import my_module_2
+```
+
+`main.py`:
+
+```python
+from my_package import *
+
+my_module_1.func()
+mf.my_module_2.func()
+```
+
+As you can see, if the processgot understand all types of ways get very straight forward. This example follows the same logic as the examples before. We just import everything from the package directly and therefore everything which is defined in `__init__.py` we can use directly without the package name.
+
+
+<br><br>
 
 ---
 ### Pip Package
@@ -193,7 +398,7 @@ But change *authentification code with your real authentification code from PyPI
 
 
 
-
+<br><br>
 
 ---
 ### Real Example (pip-module)
