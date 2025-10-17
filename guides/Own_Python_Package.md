@@ -1,17 +1,18 @@
-# Own Python Module
+# Own Python Package
 
 [<img align="right" width=150px src="../res/rackete_2.png"></img>](../README.md)
 
+Contents:
+- [Motivation](#motivation)
+- [Local Package](#local-package)
+- [Package Access](#package-access)
+- [Pip Package](#pip-package)
+- [Real Example (pip-module)](#real-example-pip-module)
+    - [Another example](#another-example)
+- [Documentation](#documentation)
 
-- [Own Python Module](#own-python-module)
-    - [Motivation](#motivation)
-    - [Local Package](#local-package)
-    - [Package Access](#package-access)
-    - [Pip Package](#pip-package)
-    - [Real Example (pip-module)](#real-example-pip-module)
-      - [Another example](#another-example)
 
-
+> If you wonder what is a `Python Module` and what is a `Python Package`? -> Check out [the local package chapter](#local-package).
 
 > click the **rocket** for going **back**
 
@@ -21,7 +22,7 @@
 ---
 ### Motivation
 
-There are many good reasons to build a own module. Of course you can also just make python files and import and use them like:
+There are many good reasons to build a own module/package. Of course you can also just make python files and import and use them like:
 
 ```
 |--- My_Project
@@ -570,6 +571,375 @@ include res/*
 ```
 
 
+<br><br>
+
+---
+
+### Documentation
+
+If you created your own amazing python package, you also want that everybody can unleash the power of your code and therefore a need for a good documentation is needed. While Sphinx is nice, it is a bit more impractical to host a website for your documentation. A much simpler and still comfortable way is to include your documentation into your README/Markdown ecosystem on GitHub or GitLab.<br>
+For that you need to document your code with PyDocs, the tripple quotes. The tripple quotes can be put on classes, functions and the beginning of files and then they are the description and can be used for building a documentation -> they are saved into the `__doc__` attribute and then can be accessed via this doc attribute.
+
+```python
+"""
+This is my awesome python file with a really amazing functionality.
+- Awesome Function 1
+- ...
+"""
+
+def calculate_area(length: float, width: float, unit: str = "cm") -> str:
+    """
+    Calculate the area of a rectangle and return a formatted string.
+
+    Parameters:
+    -----------
+    length : float
+        The length of the rectangle.
+    width : float
+        The width of the rectangle.
+    unit : str, optional
+        The unit of measurement (default is 'cm').
+
+    Returns:
+    --------
+    str
+        A string describing the area with the specified unit.
+    
+    Example:
+    --------
+    >>> calculate_area(5, 3)
+    'Area: 15 cm²'
+    """
+    area = length * width
+    return f"Area: {area} {unit}²"
+
+```
+
+There are different styles of PyDoc Strings:
+
+- **The Official Minimal Docstring**
+    ```python
+    def add(a, b):
+        """Return the sum of a and b."""
+        return a + b
+    ```
+    - One-line docstring describing the function.
+    - Enough for simple functions.
+- **Multi-line Docstring**
+    ```python
+    def calculate_area(length, width):
+        """
+        Calculate the area of a rectangle.
+
+        Parameters:
+            length (float): Length of the rectangle.
+            width (float): Width of the rectangle.
+
+        Returns:
+            float: Area of the rectangle.
+        """
+        return length * width
+    ```
+    - Includes parameters, types, and return value.
+    - Easy to generate automatic documentation with tools like Sphinx.
+- **Google Style**
+    ```python
+    def calculate_area(length, width):
+        """
+        Calculates the area of a rectangle.
+
+        Args:
+            length (float): Length of the rectangle.
+            width (float): Width of the rectangle.
+
+        Returns:
+            float: The area of the rectangle.
+        """
+        return length * width
+    ```
+    - Very popular, especially in Google-style Python projects.
+    - Uses `Args:` and `Returns:` keywords.
+- **NumPy / SciPy Style**
+    ```python
+    def calculate_area(length, width):
+        """
+        Calculate the area of a rectangle.
+
+        Parameters
+        ----------
+        length : float
+            Length of the rectangle.
+        width : float
+            Width of the rectangle.
+
+        Returns
+        -------
+        float
+            Area of the rectangle.
+        """
+        return length * width
+    ```
+    - Popular in scientific Python projects (`numpy`, `pandas`, `scipy`).
+    - Uses `Parameters` / `Returns` blocks with dashes.
+- **Sphinx Style** ([see also here](https://github.com/xXAI-botXx/Project-Helper/blob/main/guides/Sphinx_Helper.md))
+    ```python
+    def calculate_area(length, width):
+        """
+        Calculate the area of a rectangle.
+
+        :param msg: Length of the rectangle.
+        :type msg: float
+        :param msg: Width of the rectangle.
+        :type msg: float
+
+        :return: Area of the rectangle.
+        :rtype: float
+        """
+        return length * width
+    ```
+    - More inconvenient.
+    - Only if you are 100% to use Sphinx with your project.
+    - Uses `:param msg:`+`:type msg:` / `:return:`+`:rtype:`
 
 
+<br><br>
+
+With that most of your work is done. Next you can use a lib like `pdoc` or `pydoc-markdown`, or you can write your own little extraction script.
+
+<br><br>
+
+**Converting your documentation into an markdown format with `pdoc`**
+
+First install the package:
+```bash
+pip install pdoc
+```
+
+Now create your markdown:
+```bash
+pdoc --output-dir docs --template-dir . --format markdown your_package
+```
+
+Or:
+```bash
+pdoc --output-format markdown your_package > docs/documentation.md
+```
+
+See -> https://pypi.org/project/pdoc/
+
+<br><br>
+
+**Converting your documentation into an markdown format with `pydoc-markdown`**
+
+Install the package:
+```bash
+pip install pydoc-markdown
+```
+
+Now create a `pydoc-markdown.yml` and fill it with (for example):
+```yaml
+loaders:
+  - type: python
+    search_path: ["."]
+renderer:
+  type: markdown
+  filename: docs/documentation.md
+modules:
+  - your_module
+```
+
+Then run:
+```
+pydoc-markdown
+```
+
+
+See -> https://pypi.org/project/pydoc-markdown/
+
+
+<br><br>
+
+**Converting your documentation into an markdown format with your own script**
+
+Python provides some very useful tools inside of its standard library for working with packages.
+
+* `importlib`: used for **dynamically importing modules and packages** at runtime.
+    * `importlib.import_module(name)`: import a module from its name string.
+    * `importlib.reload(module)`: reload an already imported module.
+    * `importlib.util.find_spec(name)`: find a module’s import specification without importing it.
+* `inspect`: used for **introspecting objects** to extract metadata such as functions, classes, signatures, and docstrings.
+    * `inspect.getmembers(obj)`: return all members (functions, classes, variables) of an object.
+    * `inspect.getdoc(obj)`: get the cleaned-up docstring of an object.
+    * `inspect.signature(obj)`: obtain the call signature of a function, method, or class constructor.
+    * `inspect.isfunction(obj)`: check if an object is a user-defined function.
+    * `inspect.isclass(obj)`: check if an object is a class.
+    * `inspect.ismethod(obj)`: check if an object is a bound method of a class instance.
+* `os`: used for **interacting with the operating system and file system**.
+    * `os.makedirs(path, exist_ok=True)`: create directories recursively.
+    * `os.path.join(a, b, ...)`: safely join multiple path components.
+    * `os.listdir(path)`: list all files and folders in a directory.
+    * `os.remove(path)`: delete a file from the filesystem.
+    * `os.environ`: access or modify environment variables.
+* `pkgutil`: used for **discovering and iterating through submodules and subpackages** in a package.
+    * `pkgutil.walk_packages(path, prefix)`: iterate through all submodules in a package hierarchy.
+    * `pkgutil.get_data(package, resource)`: access data files bundled inside a package.
+    * `pkgutil.extend_path(path, name)`: extend a package’s search path for namespace packages.
+* `textwrap`: used for **formatting, indenting, and wrapping text**, especially when cleaning up docstrings.
+
+    * `textwrap.dedent(text)`: remove common leading whitespace from text blocks.
+    * `textwrap.indent(text, prefix)`: add consistent indentation to each line.
+    * `textwrap.fill(text, width)`: wrap text to a fixed width for better readability.
+    * `textwrap.shorten(text, width)`: truncate text to fit within a maximum width.
+
+* `types.ModuleType`: represents the **type object for all Python modules** (useful for type checking and annotations).
+    * `isinstance(obj, ModuleType)`: verify that an object is a module instance.
+    * Used mainly for type hints and runtime validation in introspection tools.
+
+
+
+```python
+import importlib
+import inspect
+import os
+import pkgutil
+import textwrap
+from types import ModuleType
+
+
+def generate_markdown_for_module(module: ModuleType) -> str:
+    """Generate markdown documentation for a single module object."""
+    lines = [f"# Module `{module.__name__}`\n"]
+
+    # Module docstring
+    module_doc = inspect.getdoc(module)
+    if module_doc:
+        lines.append(textwrap.dedent(module_doc) + "\n")
+
+    members = inspect.getmembers(module)
+    classes = [m for m in members if inspect.isclass(m[1]) and m[1].__module__ == module.__name__]
+    functions = [m for m in members if inspect.isfunction(m[1]) and m[1].__module__ == module.__name__]
+    variables = [
+        m for m in members
+        if not inspect.isbuiltin(m[1])
+        and not inspect.isclass(m[1])
+        and not inspect.isfunction(m[1])
+        and not m[0].startswith("__")
+    ]
+
+    # --- Classes ---
+    if classes:
+        lines.append("## Classes\n")
+        for name, cls in classes:
+            lines.append(f"### `{name}`\n")
+            cls_doc = inspect.getdoc(cls)
+            if cls_doc:
+                lines.append(textwrap.dedent(cls_doc) + "\n")
+
+            try:
+                sig = inspect.signature(cls)
+                lines.append(f"**Constructor:**\n```python\n{name}{sig}\n```\n")
+            except Exception:
+                pass
+
+            methods = inspect.getmembers(cls, predicate=inspect.isfunction)
+            if methods:
+                lines.append("#### Methods\n")
+                for m_name, method in methods:
+                    if m_name.startswith("__"):
+                        continue
+                    doc = inspect.getdoc(method)
+                    try:
+                        sig = str(inspect.signature(method))
+                    except Exception:
+                        sig = "()"
+                    lines.append(f"- **`{m_name}{sig}`**")
+                    if doc:
+                        lines.append(f"  \n{textwrap.indent(textwrap.dedent(doc), '  ')}\n")
+
+    # --- Functions ---
+    if functions:
+        lines.append("\n## Functions\n")
+        for name, func in functions:
+            try:
+                sig = inspect.signature(func)
+            except Exception:
+                sig = "()"
+            lines.append(f"### `{name}{sig}`\n")
+            doc = inspect.getdoc(func)
+            if doc:
+                lines.append(textwrap.dedent(doc) + "\n")
+
+    # --- Variables ---
+    if variables:
+        lines.append("\n## Variables / Constants\n")
+        for name, val in variables:
+            val_repr = repr(val)
+            if len(val_repr) > 60:
+                val_repr = val_repr[:57] + "..."
+            lines.append(f"- **{name}** = `{val_repr}`")
+
+    return "\n".join(lines)
+
+
+def iter_submodules(package_name: str):
+    """Yield (module_name, module) pairs for all submodules in a package."""
+    package = importlib.import_module(package_name)
+    yield package_name, package  # include the root package itself
+
+    if hasattr(package, "__path__"):  # only packages have __path__
+        for mod_info in pkgutil.walk_packages(package.__path__, prefix=package.__name__ + "."):
+            try:
+                submodule = importlib.import_module(mod_info.name)
+                yield mod_info.name, submodule
+            except Exception as e:
+                print(f"Could not import {mod_info.name}: {e}")
+
+
+def generate_docs_for_package(
+    package_name: str,
+    output_dir: str = "docs",
+    combine_into_one_file: bool = True
+):
+    """Generate Markdown documentation for an entire package."""
+    os.makedirs(output_dir, exist_ok=True)
+    combined_lines = [f"# Documentation for package `{package_name}`\n"]
+
+    for mod_name, module in iter_submodules(package_name):
+        print(f"Documenting {mod_name}...")
+        md_content = generate_markdown_for_module(module)
+        relative_name = mod_name.replace(package_name + ".", "")
+
+        if combine_into_one_file:
+            combined_lines += [f"\n---\n\n## Module `{relative_name or package_name}`\n\n"]
+            combined_lines += [md_content]
+        else:
+            # One file per module
+            file_name = f"{relative_name or package_name}.md"
+            path = os.path.join(output_dir, file_name)
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(md_content)
+            print(f"Wrote {path}")
+
+    if combine_into_one_file:
+        output_file = os.path.join(output_dir, f"{package_name}_DOCUMENTATION.md")
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("\n".join(combined_lines))
+        print(f"\nCombined documentation written to {output_file}")
+
+
+if __name__ == "__main__":
+    # Example usage:
+    # Replace 'your_package_name' with your actual package
+    generate_docs_for_package("your_package_name", output_dir="docs", combine_into_one_file=True)
+```
+
+Just run this script:
+
+```bash
+python doc_gen.py
+```
+
+<br><br>
+
+Now you should be able to first write your documentation inside of python and then let the documentation transfered to markdown.
 

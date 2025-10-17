@@ -52,7 +52,7 @@ Local Installation of the Project-Helper Guides:
 ### [Ananconda](#anaconda)
 ### [Python Tests](guides/Python_Tests.md)
 ### [Python Custom Errors/Exceptions](#python-custom-exceptions)
-### [Custom Module](guides/Own_Python_Module.md)
+### [Own Python Package](guides/Own_Python_Package.md)
 ### [Sphinx Guide](guides/Sphinx_Helper.md)
 ### [IPYNB Interactives](guides/IPYNB_Interactives.md)
 ### [Ipynb to Markdown](#ipynb-to-markdown)
