@@ -446,8 +446,7 @@ git remote remove github
 Cloning a Git repository with submodules:
 ```bash
 git clone <url>
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 
@@ -461,6 +460,16 @@ Removing a submodule:
 git rm module-folder-name
 git commit -m "removed submodule"
 git push
+```
+
+Updating Submodules:
+```bash
+git submodule update --recursive --remote
+```
+
+Get current status of submodules:
+```bash
+git submodule status
 ```
 
 
