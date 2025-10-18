@@ -577,8 +577,8 @@ include res/*
 
 ### Documentation
 
-If you created your own amazing python package, you also want that everybody can unleash the power of your code and therefore a need for a good documentation is needed. While Sphinx is nice, it is a bit more impractical to host a website for your documentation. A much simpler and still comfortable way is to include your documentation into your README/Markdown ecosystem on GitHub or GitLab.<br>
-For that you need to document your code with PyDocs, the tripple quotes. The tripple quotes can be put on classes, functions and the beginning of files and then they are the description and can be used for building a documentation -> they are saved into the `__doc__` attribute and then can be accessed via this doc attribute.
+If you created your own amazing python package, you also want that everybody can unleash the power of your code and therefore a need for a good documentation is needed. While Sphinx is nice, it is a bit more impractical, while there is a much easier way to do so: Using `pdoc` and GitHub Pages.<br>
+For that you need to document your code with PyDocStrings, the tripple quotes. The tripple quotes can be put on classes, functions and the beginning of files and then they are the description and can be used for building a documentation -> they are saved into the `__doc__` attribute and then can be accessed via this doc attribute.
 
 ```python
 """
@@ -704,11 +704,11 @@ There are different styles of PyDoc Strings:
 
 <br><br>
 
-With that most of your work is done. Next you can use a lib like `pdoc` or `pydoc-markdown`, or you can write your own little extraction script.
+With that most of your work is done. Next you can use a lib like `pdoc` (or you can write your own little extraction script).
 
 <br><br>
 
-**Converting your documentation into an markdown format with `pdoc`**
+**Converting your documentation into a html format with `pdoc`**
 
 First install the package:
 ```bash
@@ -717,47 +717,27 @@ pip install pdoc
 
 Now create your markdown:
 ```bash
-pdoc --output-dir docs --template-dir . --format markdown your_package
-```
-
-Or:
-```bash
-pdoc --output-format markdown your_package > docs/documentation.md
+cd to your top-level project folder (where your_package is)
+pdoc -o ./docs your_package
 ```
 
 See -> https://pypi.org/project/pdoc/
 
-<br><br>
+Now just publish it via GitHub pages:
+1. Go to Github and your repo
+2. Go to `Settings > Pages > Build and deployment`
+3. Select `Select from a branch` ->  `main` and folder is `/docs`
 
-**Converting your documentation into an markdown format with `pydoc-markdown`**
+And you are finish -> after a few minutes reload the page and on top there should be the link which should be:
+`https://username.github.io/repo-name/`
 
-Install the package:
-```bash
-pip install pydoc-markdown
-```
+<br>
 
-Now create a `pydoc-markdown.yml` and fill it with (for example):
-```yaml
-loaders:
-  - type: python
-    search_path: ["."]
-renderer:
-  type: markdown
-  filename: docs/documentation.md
-modules:
-  - your_module
-```
-
-Then run:
-```
-pydoc-markdown
-```
-
-
-See -> https://pypi.org/project/pydoc-markdown/
-
+Here you find an example project using pdoc method: [Image-Physics-Simulation](https://github.com/xXAI-botXx/Image-Physics-Simulation)
 
 <br><br>
+
+It follows an alternative manual way to do...but this is a much harder way and you will have to code it by yourself. But I give you some useful things on your way.
 
 **Converting your documentation into an markdown format with your own script**
 
