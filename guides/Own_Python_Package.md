@@ -615,33 +615,8 @@ def calculate_area(length: float, width: float, unit: str = "cm") -> str:
 
 ```
 
-There are different styles of PyDoc Strings:
+There are different styles of PyDoc Strings (filtered for `pdoc`):
 
-- **The Official Minimal Docstring**
-    ```python
-    def add(a, b):
-        """Return the sum of a and b."""
-        return a + b
-    ```
-    - One-line docstring describing the function.
-    - Enough for simple functions.
-- **Multi-line Docstring**
-    ```python
-    def calculate_area(length, width):
-        """
-        Calculate the area of a rectangle.
-
-        Parameters:
-            length (float): Length of the rectangle.
-            width (float): Width of the rectangle.
-
-        Returns:
-            float: Area of the rectangle.
-        """
-        return length * width
-    ```
-    - Includes parameters, types, and return value.
-    - Easy to generate automatic documentation with tools like Sphinx.
 - **Google Style**
     ```python
     def calculate_area(length, width):
@@ -681,25 +656,8 @@ There are different styles of PyDoc Strings:
     ```
     - Popular in scientific Python projects (`numpy`, `pandas`, `scipy`).
     - Uses `Parameters` / `Returns` blocks with dashes.
-- **Sphinx Style** ([see also here](https://github.com/xXAI-botXx/Project-Helper/blob/main/guides/Sphinx_Helper.md))
-    ```python
-    def calculate_area(length, width):
-        """
-        Calculate the area of a rectangle.
 
-        :param msg: Length of the rectangle.
-        :type msg: float
-        :param msg: Width of the rectangle.
-        :type msg: float
-
-        :return: Area of the rectangle.
-        :rtype: float
-        """
-        return length * width
-    ```
-    - More inconvenient.
-    - Only if you are 100% to use Sphinx with your project.
-    - Uses `:param msg:`+`:type msg:` / `:return:`+`:rtype:`
+> Also add Doc Strings to the `__init__.py` files for the package (subpackage) descriptions. And add PyDoc Strings on top of an Module for the whole Module.
 
 
 <br><br>
