@@ -320,11 +320,12 @@ docker run [OPTIONS] IMAGE [COMMAND]
 | Flag                    | Description                                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------------------ |
 | `-it`                   | Run container interactively with a terminal (`-i` keeps STDIN open, `-t` allocates a pseudo-TTY) |
-| `--rm`                  | Automatically remove the container when it exits                                                 |
-| `-d`                    | Run container in **detached/background mode**                                                    |
-| `--name <name>`         | Assign a custom name to your container                                                           |
-| `-p <host>:<container>` | Map host port to container port                                                                  |
-| `-v <host>:<container>` | Mount host directory into container (persistent data)                                            |
+| `--rm`                  | Automatically remove the container when it exits       |
+| `-d`                    | Run container in **detached/background mode**             |
+| `--name <name>`         | Assign a custom name to your container        |
+| `-p <host>:<container>` | Map host port to container port            |
+| `-v <host>:<container>` | Mount host directory into container (persistent data)           |
+| `-w <container>` | Set root directory inside of the docker into the given path, for example `-w /workspace`    |
 | `--gpus all`            | Give container access to all NVIDIA GPUs                                                         |
 
 
