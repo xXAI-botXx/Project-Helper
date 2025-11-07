@@ -514,12 +514,78 @@ This is useful for testing if your GPU is working correctly in a reproducible en
 
 <br>
 
+Additional commands to check CUDA on docker (from a real example):
+
+> Here you might want remove `--runtime=nvidia`, this is a specific runtime from the nvidia-toolkit which helps in this case to find the hardware and run the code. Also change the mountings `-v` as wished and change the docker image name `cosmos-predict2-local` to yours.
+
+```
+# Get Device Number
+nvidia-smi -L
+
+# Find the right (previously installed) image
+docker image ls
+
+# Check versions (multiline commands)
+echo -e "\n> CUDA TEST start <\n\n---------\nHOST GPU Versions\n---------\n" && \
+echo "NVIDIA Driver Version: $(nvidia-smi --query-gpu=driver_version --format=csv,noheader)" && echo "CUDA Version: $(nvcc --version | grep release | awk '{print $6}' | sed 's/,//')" && \
+echo -e "\n---------\nDOCKER GPU Versions\n---------\n" && \
+docker run --gpus all --runtime=nvidia --rm \
+--shm-size=8g \
+-v ~/src/cosmos-predict2:/workspace \
+-v ~/src/cosmos-predict2/datasets:/workspace/datasets \
+-v ~/src/cosmos-predict2/checkpoints:/workspace/checkpoints \
+cosmos-predict2-local \
+/bin/bash -c 'echo "CUDA Version:" $(nvcc --version | grep release | awk "{print \$6}" | sed "s/,//")' && \
+echo -e "\n> CUDA TEST end <\n" 
+
+# Start docker
+docker run --gpus all --runtime=nvidia -it --rm \
+--shm-size=8g \
+-v ~/src/cosmos-predict2:/workspace \
+-v ~/src/cosmos-predict2/datasets:/workspace/datasets \
+-v ~/src/cosmos-predict2/checkpoints:/workspace/checkpoints \
+cosmos-predict2-local
+
+# Tests
+nvidia-smi
+python3 -c "import torch; print(torch.cuda.device_count()); print(torch.cuda.get_device_name(0))"
+
+exit
+```
+
+Or similiar but a bit simpler:
+
+```bash
+docker run --gpus '"device=0"' --runtime=nvidia -it --rm \
+  -v ~/src/cosmos-predict2:/workspace \
+  -v ~/src/cosmos-predict2/datasets:/workspace/datasets \
+  -v /ssd0/tippolit/checkpoints/checkpoints:/workspace/checkpoints \
+  cosmos-predict2-local
+
+then type:
+env | grep CUDA
+ls /dev/nvidia*
+nvidia-smi
+python -i
+import torch; print(torch.cuda.is_available())
+print(torch.cuda.get_device_name(0))
+exit()
+exit
+```
+
+
+<br>
+
 **Other related commands**<br>
 
 - GPU status live refresh every 1 second:
    ```bash
    nvidia-smi -l 1
    ```
+- Get all GPU Devices:
+  ```bash
+  nvidia-smi -L
+  ```
 - Custom GPU info in CSV format:
    ```bash
    nvidia-smi --query-gpu=name,driver_version,memory.total,memory.used,memory.free --format=csv
