@@ -240,6 +240,10 @@ Docker helps you:
 ### Container Management
 
 **Basic commands to run a container:**
+- Check your current docker installation and environment:
+    ```bash
+    docker info
+    ```
 - Pull an image from Docker Hub:
     ```bash
     docker pull ubuntu:22.04
