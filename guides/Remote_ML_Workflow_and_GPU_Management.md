@@ -14,6 +14,7 @@ Table of Contents:
 - [Data Transfer](#data-transfer)
 - [Wake on Lan](#wake-on-lan)
 - [GPU Healthcare (Nvidia)](#gpu-healthcare)
+- [PyTorch CUDA Version Support Check](#pytorch-cuda-version-support-check)
 - [PyTorch](#pytorch)
 - [TensorFlow](#tensorflow)
 - [Run Python-Script in Background](#run-python-script-in-background)
@@ -574,6 +575,8 @@ exit
 ```
 
 
+You might want to check out [PyTorch CUDA Version Support Check](#pytorch-cuda-version-support-check).
+
 <br>
 
 **Other related commands**<br>
@@ -619,6 +622,92 @@ exit
    ```bash
    lspci | grep -i nvidia
    ```
+
+<br><br>
+
+---
+### PyTorch CUDA Version Support Check
+
+
+Add a `pytorch_cuda_check.Dockerfile`:
+```bash
+# ==================================
+#  Minimal PyTorch + CUDA Test Image
+# ==================================
+
+# xX CHANGE ME Xx
+# --- Choose your CUDA version here ---
+# FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
+# FROM nvidia/cuda:12.0.1-devel-ubuntu20.04
+# FROM nvidia/cuda:12.0.1-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+# FROM nvcr.io/nvidia/pytorch:23.09-py3
+# FROM nvcr.io/nvidia/pytorch:25.04-py3
+# --------------------------------------
+
+# Prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install Python + pip
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# For Debugging -> show CUDA directories
+RUN ls -l /usr/local/cuda*
+
+# xX CHANGE ME Xx
+# Install matching PyTorch version (adjust when CUDA base image changes)
+# CUDA 12.1 → cu121
+# CUDA 12.0 → cu120
+# CUDA 11.8 → cu118 
+RUN pip install torch==2.3.1+cu118 torchvision==0.18.1+cu118 torchaudio==2.3.1 \
+    --index-url https://download.pytorch.org/whl/cu118
+
+# You might want also change the torch version itself, checkout: 
+#            - https://pytorch.org/get-started/locally/
+#            - https://pytorch.org/get-started/previous-versions/
+
+
+
+
+# ---------------------------
+# Creating a test python file
+# ---------------------------
+RUN mkdir -p /workspace && \
+    echo 'import torch\n' \
+         'print("PyTorch Version:", torch.__version__)\n' \
+         'print("CUDA verfügbar?:", torch.cuda.is_available())\n' \
+         'if torch.cuda.is_available():\n' \
+         '    print("CUDA Geräteanzahl:", torch.cuda.device_count())\n' \
+         '    print("CUDA Gerät:", torch.cuda.get_device_name(0))\n' \
+         'else:\n' \
+         '    print("[ERROR] Keine CUDA-Unterstützung erkannt!")\n' \
+         > /workspace/test_cuda.py
+
+WORKDIR /workspace
+
+CMD ["python3", "test_cuda.py"]
+```
+
+Build an Image:
+```bash
+docker build --no-cache -t cuda-check -f pytorch_cuda_check.Dockerfile .
+```
+
+Run as Container:
+```bash
+docker run --rm cuda-check
+
+# or
+
+docker run --rm --gpus all cuda-check
+
+# or
+
+docker run --runtime nvidia --rm --gpus all cuda-check
+# docker run --runtime=nvidia --rm --gpus all cuda-check
+```
 
 
 <br><br>
