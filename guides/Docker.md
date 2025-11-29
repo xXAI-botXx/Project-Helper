@@ -1167,4 +1167,42 @@ With `docker-compose`, you don’t need to manually run `docker network create` 
     clang++ --version
     cmake --version
     ```
+2. **PyTorch Env with specific Python version** <br>
+    As before we use this as environment to work on a AI project on a windows system. With this Image:
+    ```docker
+    FROM nvidia/cuda:13.0.2-cudnn-devel-ubuntu24.04
+
+    # Install basics
+    RUN apt update && apt install -y \
+        wget build-essential libssl-dev libffi-dev \
+        zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
+        git
+
+    # Install Python 3.10
+    RUN wget https://www.python.org/ftp/python/3.10.15/Python-3.10.15.tgz && \
+        tar -xvf Python-3.10.15.tgz && \
+        cd Python-3.10.15 && \
+        ./configure --enable-optimizations && \
+        make -j"$(nproc)" && \
+        make altinstall
+
+    # Set as standard python
+    RUN ln -s /usr/local/bin/python3.10 /usr/bin/python
+
+    # Update + PyTorch
+    RUN python -m ensurepip && python -m pip install --upgrade pip
+    RUN python -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu123
+    ```
+    Next open your Docker Desktop and click on the bottom right corner to open the bash and type:
+    ```bash
+    cd D:\Informatik\Projekte\RAG_Evaluation
+    docker build -t rag-eval .
+    ```
+    Lastly you can start the docker and attach your Visual Studio Code with the Docker Extension to it.
+    ```
+    cd D:\Informatik\Projekte\RAG_Evaluation
+    docker run -it --rm -v .:/workspace -w /workspace rag-eval bash
+    ```
+
+
 
