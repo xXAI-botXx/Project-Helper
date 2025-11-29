@@ -405,6 +405,8 @@ docker build --no-cache -t my_fresh_image .
 
 ### Image Management
 
+You can choose an Image you want to build and can also extend this image (use as baseline). Images are taken from: [Docker Hub](https://hub.docker.com/), just search there for an image and use the name in your image `FROM *NAME`. Some example are provided here: [Use-Cases](#use-cases) / [Template Images](#template-images).
+
 Create a Dockerfile to define a **custom image**. Comments are `#`:
 ```dockerfile
 # Base image
