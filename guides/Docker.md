@@ -19,6 +19,7 @@ Table of Contents:
 - [Image Management](#image-management)
 - [Disk/Volumne Mounting](#mounting-a-disk--volume)
 - [Container Lifecycle and Data](#container-lifecycle-and-data)
+- [Cleaning](#cleaning)
 - [Networks](#networks)
 - [Template Images](#template-images)
 - [Use Cases](#use-cases)
@@ -668,6 +669,69 @@ When you run a container, there are three ways commands can be executed:
     ```
     - Gives full control over the container.
     - Useful for debugging or exploring the environment.
+
+
+
+<br><br>
+
+---
+
+### Cleaning
+
+One issue with Docker is that it might need much memory and old images and containers stack behind the scenes.<br>
+So after your work is done or after a while you should clean up your docker system.
+
+(All of these commands are also listed in [Container Management](#container-management))
+
+First show the memory usage of your docker system:
+- Show used Storage:
+    ```bash
+    docker system df
+    ```
+- Show used Storage including volumes and build cache:
+    ```bash
+    docker system df -v
+    ```
+
+> `docker info` can sometimes also provide some useful information about your docker system.
+
+Now you can delete all not needed content with `docker system prune -a` for example. Choose `docker system prune` if you not want to delete all images.
+
+- Delete all stopped container, dangling images (without tags), unused networks and the build cache:
+    ```bash
+    docker system prune
+    ```
+- Delete all stopped container, unused images, unused networks and the build cache:
+    ```bash
+    docker system prune -a
+    ```
+- Delete all unused volumes (not container uses the volume):
+    ```bash
+    docker volume prune
+    ```
+
+Congratulations you already should have a clean docker system (check your memory usage with the `docker system df` command again). 
+
+**BUT on Windows** docker creates virtual disks for the containers and therefore it says the operating system that it wants X memory capacities and now it still need the same memory amount as before. So we have to tell the operating system to shrink the virtual disk in order to free up the memory space:
+1. Open the Powershell with administrator rights
+2. Close your Docker Desktop if opened
+3. Close WSL (The Linux Subsystem of Windows) 
+    ```powershell
+    wsl --shutdown
+    ```
+4. Find your docker virtual disk file.<br>
+    Most likely located in `C:\Users\USERNAME\AppData\Local\Docker\wsl\disk\docker_data.vhdx` <br>
+    Else search it with:
+    ```powershell
+    Get-ChildItem "C:\Users\$env:USERNAME\AppData\Local\Docker" -Recurse -Filter *.vhdx
+    ```
+5. Optimize the Memory (free up empty space in virtual disk)
+    ```powershell
+    Optimize-VHD -Path "C:\Users\tobia\AppData\Local\Docker\wsl\disk\docker_data.vhdx" -Mode Full
+    ```
+
+> Use programs like `WizTree` or commands like `du -sh .` / `du -sh * | sort -h` / `ncdu /` (sudo apt install ncdu) on Linux and on Windows: `Get-ChildItem -Recurse | Measure-Object -Property Length -Sum` to check general memory usage on your disk.
+
 
 <br><br>
 
