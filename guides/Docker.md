@@ -10,6 +10,7 @@ Table of Contents:
     - Windows
         - [Using Docker Desktop](#installation-via-docker-desktop-windows)
         - [Installation via WSL \& without Docker Desktop](#installation-via-wsl--without-docker-desktop-windows)
+        - [[addition to the previous point] Installation on another Disk](#installation-on-another-disk-on-windows)
     - Linux
         - [Quick Installation via distro package](#quick-installation-via-distro-package-linux)
         - [Official Install (via Docker repository)](#official-installation-via-docker-repository-linux)
@@ -132,6 +133,87 @@ And you might want to try git gui by:
 git gui
 ```
 
+
+<br><br>
+
+---
+
+### Installation on another Disk on Windows
+
+You might have a small C-drive and want to install and use Docker via another drive and that is not easy at all. First we have to make sure that your old docker installation is removed correctly, then we install it correctly and then we also have to correct WSL for VSCode.
+
+[A standard removing process might also work, so you can also first try to remove Docker via the `settings > apps` of your windows, in this cse you can skip the first step BUT notice the substeps after the first command.]
+1. So first open your powershell **with administrator rights** and paste/run this code which cleans/removes your old Docker installation:
+    ```powershell
+    Write-Host "Docker Desktop full cleanup starting..."
+
+    # Stop services if they exist
+    Get-Service -Name "com.docker.*" -ErrorAction SilentlyContinue | Stop-Service -Force -ErrorAction SilentlyContinue
+
+    # Kill running Docker processes
+    Get-Process -Name "Docker*" -ErrorAction SilentlyContinue | Stop-Process -Force
+    Get-Process -Name "com.docker.*" -ErrorAction SilentlyContinue | Stop-Process -Force
+
+    # Remove program files
+    Remove-Item -Recurse -Force "C:\Program Files\Docker" -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force "C:\Program Files\Docker\Docker" -ErrorAction SilentlyContinue
+
+    # Remove program data
+    Remove-Item -Recurse -Force "C:\ProgramData\Docker" -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force "C:\ProgramData\DockerDesktop" -ErrorAction SilentlyContinue
+
+    # Remove user AppData
+    Remove-Item -Recurse -Force "$env:LOCALAPPDATA\Docker" -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force "$env:LOCALAPPDATA\Docker Desktop" -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force "$env:APPDATA\Docker" -ErrorAction SilentlyContinue
+    Remove-Item -Recurse -Force "$env:APPDATA\Docker Desktop" -ErrorAction SilentlyContinue
+
+    # Remove WSL artifacts
+    wsl --unregister docker-desktop 2>$null
+    wsl --unregister docker-desktop-data 2>$null
+
+    # Remove registry keys
+    Remove-Item -Path "HKCU:\Software\Docker Desktop" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path "HKLM:\Software\Docker Inc." -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Docker Desktop" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Docker Desktop" -Recurse -Force -ErrorAction SilentlyContinue
+
+    Write-Host "Docker Desktop cleanup complete."
+    ```
+    You maybe also want removing old WSL data, by first stoping WSL:
+    ```powershell
+    Write-Host "Force-killing stuck WSL processes..."
+    taskkill /F /IM wsl.exe 2>$null
+    taskkill /F /IM wslservice.exe 2>$null
+    taskkill /F /IM ubuntu*.exe 2>$null
+
+    Write-Host "Stopping WSL..."
+    wsl --shutdown 2>$null
+
+    Write-Host "Removing Docker WSL distributions..."
+    wsl --unregister docker-desktop 2>$null
+    wsl --unregister docker-desktop-data 2>$null
+    ```
+    And then you can use a program like [WizTree](https://diskanalyzer.com/download) to locate the WSL data and remove it. You most likely will see a big blob in the program with the name `ext4.vhdx` which a virtual environment file. This can be deleted if you previously worked there and there is nothing important saved inside the virtual env and you remove the old setup from the disk completly.<br>
+    So you should use a tool like WizTree to locate and delete leftover VHDX files manually to make your system free from old unused stuff.
+1. Next download the Docker Installer from https://www.docker.com/get-started/
+2. Change the drive paths as wished and pasteinto your powershell (which will start the installation process, you might have to click some check boxes or hit ok on an interface. This will also install the WSL from the Docker on your wished drive.):
+    ```powershell
+    mkdir D:\Docker
+    cd $env:USERPROFILE\Downloads
+    start /w "" "Docker Desktop Installer.exe" install -accept-license  --installation-dir=D:\Docker --wsl-default-data-root=D:\wsl
+    ```
+3. Now you have to install WSL on the other drive (VSCode need an extra WSL for his operations):
+    ```powershell
+    wsl --install -d Ubuntu
+    wsl --list --verbose
+    wsl --export Ubuntu "D:\WSL\Ubuntu.tar"
+    wsl --unregister Ubuntu
+    wsl --import Ubuntu "D:\WSL\Ubuntu" "D:\WSL\Ubuntu.tar"
+    ```
+
+
+Your installation should be finish now and everything should works fine. Good luck ^^
 
 
 <br><br>
