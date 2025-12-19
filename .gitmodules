@@ -46,3 +46,9 @@
 [submodule "external/Project_Transformer"]
 	path = external/Project_Transformer
 	url = https://github.com/xXAI-botXx/Project_Transformer
+[submodule "external/Runtime-Guard"]
+	path = external/Runtime-Guard
+	url = https://github.com/xXAI-botXx/Runtime-Guard.git
+[submodule "external/Image-Physics-Simulation"]
+	path = external/Image-Physics-Simulation
+	url = https://github.com/xXAI-botXx/Image-Physics-Simulation.git

@@ -58,6 +58,8 @@ Local Installation of the Project-Helper Guides:
 ### [Ipynb to Markdown](#ipynb-to-markdown)
 ### [Print Helper (prime) -> Helper Module](./external/prime_printer/README.md) [[repo link](https://github.com/xXAI-botXx/prime_printer)]
 ### [OpenGL with Python (PyOpenGL not moderngl)](./external/Wind_Forge/README.md) [[repo link](https://github.com/xXAI-botXx/Wind_Forge)]
+### [Image-Physics-Simulation (image processing tools + 2D ray-tracing) -> Helper Module](./external/Image-Physics-Simulation/README.md) [[repo link](https://github.com/xXAI-botXx/Image-Physics-Simulation)]
+### [Runtime Guard (ressource monitor) -> Helper Module](./external/Runtime-Guard/README.md) [[repo link](https://github.com/xXAI-botXx/Runtime-Guard)]
 
 <br><br>
 

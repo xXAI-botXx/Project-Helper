@@ -411,7 +411,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 ```
 
-
+> You might want to checkout the examples below if you are stuck or unsure.
 
 
 4. **Local Build / Testing:**
@@ -442,7 +442,12 @@ twine upload dist/* -u __token__ -p *authentification code
 
 But change *authentification code with your real authentification code from PyPI!
  
+<br>
 
+> **Example References** <br>
+> - [Image-Physics-Simulation](./external/Image-Physics-Simulation/README.md) [[repo link](https://github.com/xXAI-botXx/Image-Physics-Simulation)]<br>
+> - [Runtime Guard](./external/Runtime-Guard/README.md) [[repo link](https://github.com/xXAI-botXx/Runtime-Guard)]
+>  
 
 
 <br><br>
