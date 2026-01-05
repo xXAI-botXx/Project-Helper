@@ -42,6 +42,7 @@ Local Installation of the Project-Helper Guides:
 ### [Latex](./external/Latex/README.md) [[repo link](https://github.com/xXAI-botXx/Latex)]
 ### [Chocolately](guides/Chocolately.md)
 ### [Docker](./guides/Docker.md)
+### [Cloud](./guides/Cloud.md)
 
 <br><br>
 
