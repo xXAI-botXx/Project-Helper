@@ -47,6 +47,10 @@ Here it is with the example of OneDrive.
     - `--progress` = progress view
     - `--transfers=8` = how many files at the same time should be uploaded
     - `--checkers=16` = how many checks are allowed to run at one time
+    - Example:
+        ```bash
+        rclone copy "D:\BACKUP\GitHub\2026_01_05 GitHub" "onedrive:BACKUP/Github/2025_01_05 Github" --progress --transfers=8 --checkers=16 --copy-links --create-empty-src-dirs
+        ```
 4. Download
     ```bash
     rclone copy onedrive:BackupOrdner "C:\my_folder" --progress --transfers=8 --checkers=16 --copy-links --create-empty-src-dirs
