@@ -55,6 +55,10 @@ Here it is with the example of OneDrive.
     ```bash
     rclone copy onedrive:BackupOrdner "C:\my_folder" --progress --transfers=8 --checkers=16 --copy-links --create-empty-src-dirs
     ```
+    Example OneDrive Full backup:
+    ```bash
+    rclone copy "onedrive:" "G:/2026-01-06 OneDrive (rclone)" --progress --transfers=8 --checkers=16 --copy-links --create-empty-src-dirs --exclude "Persönlicher Tresor/**"
+    ```
 5. Synchronize (make the target same as the source, therefore delete/add files until it is equal to the source)
     ```bash
     rclone sync "C:\my_folder" onedrive:BackupOrdner --progress --transfers=8 --checkers=16
